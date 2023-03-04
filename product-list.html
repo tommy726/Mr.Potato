@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="images/logo.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="stylesheets/style.css">
+
+  <title>Mr.Potato - 挑選美食</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- navbar -->
+  <div class="navbar-space">
+    <nav class="navbar navbar-expand-md navbar-light px-lg-8 py-lg-4 fixed-top bg-primary">
+      <h1 class="visually-hidden">Mr.Potato - 挑選美食</h1>
+      <div class="container-xxl">
+        <a class="navbar-brand" href="home.html">
+          <img src="images/logo.png" alt="" width="28" height="28" class="d-inline-block align-text-top">
+          Mr.Potato
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html"><i class="bi bi-house-door-fill"></i>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="product-list.html"><i
+                  class="bi bi-egg-fried"></i>挑選美食</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html"><i class="bi bi-person"></i>會員專區</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link  position-relative" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-cart"></i>購物車
+                <span class="position-absolute top-5 start-sm-100 translate-middle badge rounded-pill bg-potatoOrange">
+                  2
+                </span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end px-3 text-end" aria-labelledby="navbarDropdown">
+                <table class="table text-nowrap">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center">商品名稱</th>
+                      <th scope="col" class="text-center" width="100">數量</th>
+                      <th scope="col" class="text-end">總價</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td scope="row" class="text-start"><a href="#"><i class="bi bi-trash3"></i></a>馬鈴薯沙拉</td>
+                      <td class="text-center">2</td>
+                      <td class="text-end">$ 120</td>
+                    </tr>
+                    <tr>
+                      <td scope="row" class="text-start"><a href="#"><i class="bi bi-trash3"></i></a>嫩肩牛餐盒</td>
+                      <td class="text-center">1</td>
+                      <td class="text-end">$ 120</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a href="checkout-cart.html" class="btn btn-sm btn-outline-potatoText">前往購物車</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- content -->
+  <div class="container flex-grow-1 mb-8">
+    <div class="row justify-content-center">
+      <div class="col-md-3 mb-6 bg-primary product-list">
+        <div class="top sticky-md-top">
+          <h3>Categories</h3>
+          <div class="list-group flex-row flex-md-column" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
+              href="#list-all" role="tab" aria-controls="list-all">所有產品</a>
+            <a class="list-group-item list-group-item-action" id="list-vegetarian-list" data-bs-toggle="list"
+              href="#list-vegetarian" role="tab" aria-controls="list-vegetarian">純素主義</a>
+            <a class="list-group-item list-group-item-action" id="list-meat-list" data-bs-toggle="list"
+              href="#list-meat" role="tab" aria-controls="list-meat">原肉至上</a>
+            <a class="list-group-item list-group-item-action" id="list-seafood-list" data-bs-toggle="list"
+              href="#list-seafood" role="tab" aria-controls="list-seafood">就愛海味</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 product-items">
+        <div class="tab-content" id="nav-tabContent">
+          <!-- all -->
+          <div class="tab-pane fade show active" id="list-all" role="tabpanel" aria-labelledby="list-all-list">
+            <div class="row row-cols-2 row-cols-md-3 g-4">
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/potatoSalad.jpg" class="card-img-top" alt="potatoSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title"><a class="default" href="product-page.html">馬鈴薯沙拉</a></h5>
+                    <div class="product-items-content">
+                      <a class="default" href="product-page.html">營養成份</a>
+                      <span>$ 60</span>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button type="button" class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/eggSalad.jpg" class="card-img-top" alt="potatoSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">雞蛋沙拉</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 60</span>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/breadSalad.jpg" class="card-img-top" alt="potatoSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">麵包沙拉</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 60</span>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/salad.jpg" class="card-img-top" alt="potatoSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">原味沙拉</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 50</span>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/steakSalad.jpg" class="card-img-top" alt="chickenSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">嫩肩牛餐盒</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 120</span>
+                    </div>
+                  </div>
+                  <div class="card-footer p-0 border-0">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/chickenSalad.jpg" class="card-img-top" alt="chickenSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">舒肥雞餐盒</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 100</span>
+                    </div>
+                  </div>
+                  <div class="card-footer p-0 border-0">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/chickenRoll.jpg" class="card-img-top" alt="chickenSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">墨西哥雞捲</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 80</span>
+                    </div>
+                  </div>
+                  <div class="card-footer p-0 border-0">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/salmonSalad.jpg" class="card-img-top" alt="potatoSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">鮭魚沙拉</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 130</span>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/shrimpSalad.jpg" class="card-img-top" alt="shrimpSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">鮮蝦沙拉</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 120</span>
+                    </div>
+                  </div>
+                  <div class="card-footer p-0 border-0">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- vegetarian -->
+          <div class="tab-pane fade" id="list-vegetarian" role="tabpanel" aria-labelledby="list-vegetarian-list">
+            <div class="row row-cols-2 row-cols-md-3 g-4">
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/potatoSalad.jpg" class="card-img-top" alt="potatoSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title"><a class="default" href="product-page.html">馬鈴薯沙拉</a></h5>
+                    <div class="product-items-content">
+                      <a class="default" href="product-page.html">營養成份</a>
+                      <span>$ 60</span>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button type="button" class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/eggSalad.jpg" class="card-img-top" alt="potatoSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">雞蛋沙拉</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 60</span>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/breadSalad.jpg" class="card-img-top" alt="potatoSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">麵包沙拉</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 60</span>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/salad.jpg" class="card-img-top" alt="potatoSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">原味沙拉</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 50</span>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- meat -->
+          <div class="tab-pane fade" id="list-meat" role="tabpanel" aria-labelledby="list-meat-list">
+            <div class="row row-cols-2 row-cols-md-3 g-4">
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/steakSalad.jpg" class="card-img-top" alt="chickenSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">嫩肩牛餐盒</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 120</span>
+                    </div>
+                  </div>
+                  <div class="card-footer p-0 border-0">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/chickenSalad.jpg" class="card-img-top" alt="chickenSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">舒肥雞餐盒</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 100</span>
+                    </div>
+                  </div>
+                  <div class="card-footer p-0 border-0">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/chickenRoll.jpg" class="card-img-top" alt="chickenSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">墨西哥雞捲</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 80</span>
+                    </div>
+                  </div>
+                  <div class="card-footer p-0 border-0">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- seafood -->
+          <div class="tab-pane fade" id="list-seafood" role="tabpanel" aria-labelledby="list-seafood-list">
+            <div class="row row-cols-2 row-cols-md-3 g-4">
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/salmonSalad.jpg" class="card-img-top" alt="potatoSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">鮭魚沙拉</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 130</span>
+                    </div>
+                  </div>
+                  <div class="card-footer">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card">
+                  <div class="card-img">
+                    <img src="images/products/shrimpSalad.jpg" class="card-img-top" alt="shrimpSalad">
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">鮮蝦沙拉</h5>
+                    <div class="product-items-content">
+                      <a class="default" href="#">營養成份</a>
+                      <span>$ 120</span>
+                    </div>
+                  </div>
+                  <div class="card-footer p-0 border-0">
+                    <button class="btn">加入購物車</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="bg-white p-md-8 py-3 ">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mb-4">
+          <div class="row g-0">
+            <div class="col-md-6 col-12">
+              <div class="info mb-3">
+                <a class="h3" href="home.html">
+                  <img src="images/logo.png" alt="" width="28" height="28" class="d-inline-block align-text-top">
+                  Mr.Potato
+                </a>
+                <a href="https://goo.gl/maps/ZpDuTXDgAZu9doX88" target="_blank">台北市信義區市府路45號</a>
+                <div>
+                  <a href="tel:+886 987654321" class="info-border">0987654321</a>
+                  <a href="mailto:MrPotato@google.com">MrPotato@google.com</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 text-center">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14459.994326708158!2d121.55794255797353!3d25.034122200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx6LO854mp5Lit5b-D!5e0!3m2!1szh-TW!2stw!4v1677431686428!5m2!1szh-TW!2stw"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="row mb-3">
+            <div class="col-3">
+              <ul class="social-link p-0 fs-5">
+                <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+                <li><a href="#"><i class="bi bi-line"></i></a></li>
+              </ul>
+            </div>
+            <div class="col-9">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="請輸入 Email" aria-label="subscribeEmail"
+                  aria-describedby="subscribeEmail">
+                <button type="button" class="btn input-group-text btn-potatoOrange text-white">訂閱</button>
+              </div>
+            </div>
+          </div>
+          <span class="d-block text-center">照片均來自網路，純屬個人作業，無商業行為。</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/all.js"></script>
+
+  <script>
+    if (window.location.hash) {
+      activateTab(window.location.hash.substring(1));
+    };
+  </script>
+
+</body>
+
+</html>

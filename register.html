@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" href="images/logo.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="stylesheets/style.css">
+
+  <title>Mr.Potato - 註冊</title>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+  <!-- navbar -->
+  <div class="navbar-space">
+    <nav class="navbar navbar-expand-md navbar-light px-lg-8 py-lg-4 fixed-top bg-primary">
+      <h1 class="visually-hidden">Mr.Potato - 註冊</h1>
+      <div class="container-xxl">
+        <a class="navbar-brand" href="home.html">
+          <img src="images/logo.png" alt="" width="28" height="28" class="d-inline-block align-text-top">
+          Mr.Potato
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html"><i class="bi bi-house-door-fill"></i>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="product-list.html"><i class="bi bi-egg-fried"></i>挑選美食</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="login.html"><i class="bi bi-person"></i>會員專區</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link  position-relative" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-cart"></i>購物車
+                <span class="position-absolute top-5 start-sm-100 translate-middle badge rounded-pill bg-potatoOrange">
+                  2
+                </span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end px-3 text-end" aria-labelledby="navbarDropdown">
+                <table class="table text-nowrap">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="text-center">商品名稱</th>
+                      <th scope="col" class="text-center" width="100">數量</th>
+                      <th scope="col" class="text-end">總價</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td scope="row" class="text-start"><a href="#"><i class="bi bi-trash3"></i></a>馬鈴薯沙拉</td>
+                      <td class="text-center">2</td>
+                      <td class="text-end">$ 120</td>
+                    </tr>
+                    <tr>
+                      <td scope="row" class="text-start"><a href="#"><i class="bi bi-trash3"></i></a>嫩肩牛餐盒</td>
+                      <td class="text-center">1</td>
+                      <td class="text-end">$ 120</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <a href="checkout-cart.html" class="btn btn-sm btn-outline-potatoText">前往購物車</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- content -->
+  <div class="container flex-grow-1 my-8 py-xxl-8">
+    <div class="row justify-content-center">
+      <div class="col-xxl-2 col-lg-4 col-sm-7 col">
+        <div class="card">
+          <div class="card-header text-center bg-potatoYellow">
+            <h2 class="h3 mb-0">註冊</h2>
+          </div>
+          <div class="card-body">
+            <form class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label for="name" class="form-label">*姓名</label>
+                <input type="text" class="form-control" id="name" placeholder="王小明" required>
+              </div>
+              <div class="mb-3">
+                <label for="tel" class="form-label">*電話</label>
+                <input type="tel" class="form-control" id="tel" placeholder="0912345678" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">*信箱</label>
+                <input type="email" class="form-control" id="email" placeholder="example@gmail.com" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">*密碼</label>
+                <input type="password" class="form-control" id="password" placeholder="不得低於8字元" required>
+              </div>
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label">*確認密碼</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="請輸入相同的密碼" required>
+              </div>
+              <button type="submit" class="btn w-100 btn-potatoOrange text-white mt-3 mt-md-5">註冊</button>
+            </form>
+          </div>
+          <div class="card-footer text-muted text-end bg-potatoYellow">
+            <a href="login.html">已經有帳號了？</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="bg-white p-md-8 py-3 ">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mb-4">
+          <div class="row g-0">
+            <div class="col-md-6 col-12">
+              <div class="info mb-3">
+                <a class="h3" href="home.html">
+                  <img src="images/logo.png" alt="" width="28" height="28" class="d-inline-block align-text-top">
+                  Mr.Potato
+                </a>
+                <a href="https://goo.gl/maps/ZpDuTXDgAZu9doX88" target="_blank">台北市信義區市府路45號</a>
+                <div>
+                  <a href="tel:+886 987654321" class="info-border">0987654321</a>
+                  <a href="mailto:MrPotato@google.com">MrPotato@google.com</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 text-center">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14459.994326708158!2d121.55794255797353!3d25.034122200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx6LO854mp5Lit5b-D!5e0!3m2!1szh-TW!2stw!4v1677431686428!5m2!1szh-TW!2stw"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="row mb-3">
+            <div class="col-3">
+              <ul class="social-link p-0 fs-5">
+                <li><a href="#"><i class="bi bi-facebook"></i></a></li>
+                <li><a href="#"><i class="bi bi-instagram"></i></a></li>
+                <li><a href="#"><i class="bi bi-line"></i></a></li>
+              </ul>
+            </div>
+            <div class="col-9">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="請輸入 Email" aria-label="subscribeEmail"
+                  aria-describedby="subscribeEmail">
+                <button type="button" class="btn input-group-text btn-potatoOrange text-white">訂閱</button>
+              </div>
+            </div>
+          </div>
+          <span class="d-block text-center">照片均來自網路，純屬個人作業，無商業行為。</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/all.js"></script>
+  
+</body>
+
+</html>

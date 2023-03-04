@@ -1,0 +1,18 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "helpers/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+//bootstrap icon
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css");
+
+//自定義樣式
+@import "components/utilities";
+@import "components/banner";
+@import "components/menu-list";
+@import "components/publicity";
+@import "components/product-items";
+@import "components/footer";
+@import "components/product-list";
+@import "components/product-page";
+@import "components/checkout.scss";

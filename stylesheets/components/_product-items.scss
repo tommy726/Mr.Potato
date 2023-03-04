@@ -1,0 +1,83 @@
+.product-items {
+  .card {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .card-img {
+    position: relative;
+    overflow: hidden;
+
+    span>a {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: $potatoGreen;
+      padding: 4px;
+      font-size: $h5-font-size;
+      color: $white;
+      writing-mode: vertical-lr;
+      border-radius: $card-border-radius;
+      z-index: 1;
+    }
+
+    span>a:hover {
+      background-color: $potatoOrange;
+    }
+  }
+
+  .card:hover {
+    img {
+      transform: scale(1.1, 1.1);
+      transition: all 1s ease-out;
+    }
+  }
+
+  .product-items-content {
+    display: flex;
+    justify-content: space-between;
+
+    a:hover {
+      color: $potatoOrange;
+    }
+  }
+
+  .default {
+    color: $potatoText;
+  }
+
+  .default:hover {
+    color: $potatoOrange;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $white;
+
+    h5 {
+      font-weight: bold;
+    }
+
+    span {
+      color: $secondary;
+      align-self: flex-end;
+    }
+  }
+
+  .card-footer {
+    padding: 0;
+    border: 0;
+
+    .btn {
+      background-color: $secondary;
+      color: $white;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background-color: $potatoOrange;
+    }
+  }
+}
