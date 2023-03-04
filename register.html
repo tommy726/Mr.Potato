@@ -101,11 +101,14 @@
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">*密碼</label>
-                <input type="password" class="form-control" id="password" placeholder="不得低於8字元" required>
+                <input type="password" class="form-control" id="password" placeholder="請輸入密碼" pattern="^[a-zA-Z0-9!@#$%^&*]+$" required>
               </div>
               <div class="mb-3">
                 <label for="confirmPassword" class="form-label">*確認密碼</label>
-                <input type="password" class="form-control" id="confirmPassword" placeholder="請輸入相同的密碼" required>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="請輸入相同的密碼" data-parsley-equalto="#password" required>
+                <div class="invalid-feedback">
+                  請輸入相同的密碼
+                </div>
               </div>
               <button type="submit" class="btn w-100 btn-potatoOrange text-white mt-3 mt-md-5">註冊</button>
             </form>
