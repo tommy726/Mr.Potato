@@ -298,15 +298,12 @@ $cyans: (
 // fusv-enable
 
 // scss-docs-start theme-color-variables
-$potatoOrange:#EF5036;
-$potatoGreen: #91d6a9;
-$potatoYellow:#f9f6ed;
 $potatoText:  #565656;
-$primary:     #F6F1EB; //$blue !default;
+$primary:     #EF5036; //$blue !default;
 $secondary:   #767676; //$gray-600 !default;
-$success:       $green !default;
+$success:     #91d6a9;//$green !default;
 $info:          $cyan !default;
-$warning:       $yellow !default;
+$warning:     #f9f6ed;//$yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-900 !default;
@@ -314,9 +311,6 @@ $dark:          $gray-900 !default;
 
 // scss-docs-start theme-colors-map
 $theme-colors: (
-  "potatoOrange":$potatoOrange,
-  "potatoGreen":$potatoGreen,
-  "potatoYellow":$potatoYellow,
   "potatoText": $potatoText,
   "primary":    $primary,
   "secondary":  $secondary,
@@ -891,9 +885,9 @@ $form-check-radio-border-radius:          50% !default;
 $form-check-input-focus-border:           $input-focus-border-color !default;
 $form-check-input-focus-box-shadow:       $input-btn-focus-box-shadow !default;
 
-$form-check-input-checked-color:          $potatoOrange;//$component-active-color !default;
+$form-check-input-checked-color:          $primary;//$component-active-color !default;
 $form-check-input-checked-bg-color:       $component-active-bg !default;
-$form-check-input-checked-border-color:   $potatoOrange;//$form-check-input-checked-bg-color !default;
+$form-check-input-checked-border-color:   $primary;//$form-check-input-checked-bg-color !default;
 $form-check-input-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='none' stroke='#{$form-check-input-checked-color}' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/></svg>") !default;
 $form-check-radio-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='2' fill='#{$form-check-input-checked-color}'/></svg>") !default;
 
@@ -1114,7 +1108,7 @@ $navbar-toggler-transition:         box-shadow .15s ease-in-out !default;
 
 $navbar-light-color:                $potatoText;//rgba($black, .55) !default;
 $navbar-light-hover-color:          rgba($potatoText, .7) !default;
-$navbar-light-active-color:         $potatoOrange;//rgba($potatoText, .9) !default;
+$navbar-light-active-color:         $primary;//rgba($potatoText, .9) !default;
 $navbar-light-disabled-color:       rgba($potatoText, .3) !default;
 $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
 $navbar-light-toggler-border-color: rgba($potatoText, .1) !default;
@@ -1478,7 +1472,7 @@ $progress-bar-transition:           width .6s ease !default;
 
 // scss-docs-start list-group-variables
 $list-group-color:                  $gray-900 !default;
-$list-group-bg:                     $primary;//$white !default;
+$list-group-bg:                   #F6F1EB;//$white !default;
 $list-group-border-color:           rgba($black, .125) !default;
 $list-group-border-width:           $border-width !default;
 $list-group-border-radius:          $border-radius !default;
@@ -1488,9 +1482,9 @@ $list-group-item-padding-x:         $spacer !default;
 $list-group-item-bg-scale:          -80% !default;
 $list-group-item-color-scale:       40% !default;
 
-$list-group-hover-bg:               $primary;//$gray-100 !default;
-$list-group-active-color:           $potatoOrange;//$component-active-color !default;
-$list-group-active-bg:              $primary;//$component-active-bg !default;
+$list-group-hover-bg:             #F6F1EB;//$gray-100 !default;
+$list-group-active-color:           $primary;//$component-active-color !default;
+$list-group-active-bg:            #F6F1EB;//$component-active-bg !default;
 $list-group-active-border-color:    $list-group-active-bg !default;
 
 $list-group-disabled-color:         $gray-600 !default;
@@ -1543,7 +1537,7 @@ $breadcrumb-border-radius:          null !default;
 // Carousel
 
 // scss-docs-start carousel-variables
-$carousel-control-color:             $potatoOrange;//$white !default;
+$carousel-control-color:             $primary;//$white !default;
 $carousel-control-width:             15% !default;
 $carousel-control-opacity:           .5 !default;
 $carousel-control-hover-opacity:     .9 !default;

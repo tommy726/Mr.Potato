@@ -48,17 +48,17 @@
 
 .stepper-item.active {
   font-weight: bold;
-  color: $potatoOrange;
+  color: $primary;
 }
 
 .stepper-item.completed .step-counter {
-  background-color: $potatoGreen;
+  background-color: $success;
 }
 
 .stepper-item.completed::after {
   position: absolute;
   content: "";
-  border-bottom: 2px solid $potatoGreen;
+  border-bottom: 2px solid $success;
   width: 100%;
   top: 15px;
   left: 50%;

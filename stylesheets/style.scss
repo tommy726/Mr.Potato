@@ -8,11 +8,12 @@
 
 //自定義樣式
 @import "components/utilities";
+@import "components/site-navbar";
 @import "components/banner";
 @import "components/menu-list";
 @import "components/publicity";
 @import "components/product-items";
-@import "components/footer";
+@import "components/site-footer";
 @import "components/product-list";
 @import "components/product-page";
-@import "components/checkout.scss";
+@import "components/checkout";

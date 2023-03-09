@@ -16,8 +16,8 @@
 <body class="d-flex flex-column min-vh-100">
 
   <!-- navbar -->
-  <div class="navbar-space">
-    <nav class="navbar navbar-expand-md navbar-light px-lg-8 py-lg-4 fixed-top bg-primary">
+  <div class="site-navbar">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <h1 class="visually-hidden">Mr.Potato - 挑選美食</h1>
       <div class="container-xxl">
         <a class="navbar-brand" href="index.html">
@@ -31,19 +31,18 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html"><i class="bi bi-house-door-fill"></i>Home</a>
+              <a class="nav-link" href="index.html"><i class="bi bi-house-door-fill me-1"></i>Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="product-list.html"><i
-                  class="bi bi-egg-fried"></i>挑選美食</a>
+              <a class="nav-link active" href="product-list.html"><i class="bi bi-egg-fried me-1"></i>挑選美食</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html"><i class="bi bi-person"></i>會員專區</a>
+              <a class="nav-link" href="login.html"><i class="bi bi-person me-1"></i>會員專區</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link  position-relative" href="#" id="navbarDropdown" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-cart"></i>購物車
-                <span class="position-absolute top-5 start-sm-100 translate-middle badge rounded-pill bg-potatoOrange">
+              <a class="nav-link position-relative" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-cart me-1"></i>購物車
+                <span class="position-absolute top-5 start-sm-100 translate-middle badge rounded-pill bg-primary">
                   2
                 </span>
               </a>
@@ -69,7 +68,7 @@
                     </tr>
                   </tbody>
                 </table>
-                <a href="checkout-cart.html" class="btn btn-sm btn-outline-potatoText">前往購物車</a>
+                <a href="checkout-cart.html" class="btn btn-sm btn-outline-primary white-text-btn">前往購物車</a>
               </div>
             </li>
           </ul>
@@ -81,9 +80,9 @@
   <!-- content -->
   <div class="container flex-grow-1 mb-8">
     <div class="row justify-content-center">
-      <div class="col-md-3 mb-6 bg-primary product-list">
+      <div class="col-md-3 mb-6 product-list">
         <div class="top sticky-md-top">
-          <h3>Categories</h3>
+          <h3 class="mt-8">Categories</h3>
           <div class="list-group flex-row flex-md-column" id="list-tab" role="tablist">
             <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list"
               href="#list-all" role="tab" aria-controls="list-all">所有產品</a>
@@ -104,12 +103,12 @@
               <div class="col">
                 <div class="card">
                   <div class="card-img">
-                    <img src="images/products/potatoSalad.jpg" class="card-img-top" alt="potatoSalad">
+                    <a href="product-page.html" class="img-transform"><img src="images/products/potatoSalad.jpg" class="card-img-top" alt="potatoSalad"></a>
                   </div>
                   <div class="card-body">
                     <h5 class="card-title"><a class="default" href="product-page.html">馬鈴薯沙拉</a></h5>
                     <div class="product-items-content">
-                      <a class="default" href="product-page.html">營養成份</a>
+                      <a href="product-page.html">營養成份</a>
                       <span>$ 60</span>
                     </div>
                   </div>
@@ -126,7 +125,7 @@
                   <div class="card-body">
                     <h5 class="card-title">雞蛋沙拉</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 60</span>
                     </div>
                   </div>
@@ -143,7 +142,7 @@
                   <div class="card-body">
                     <h5 class="card-title">麵包沙拉</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 60</span>
                     </div>
                   </div>
@@ -160,7 +159,7 @@
                   <div class="card-body">
                     <h5 class="card-title">原味沙拉</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 50</span>
                     </div>
                   </div>
@@ -177,7 +176,7 @@
                   <div class="card-body">
                     <h5 class="card-title">嫩肩牛餐盒</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 120</span>
                     </div>
                   </div>
@@ -194,7 +193,7 @@
                   <div class="card-body">
                     <h5 class="card-title">舒肥雞餐盒</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 100</span>
                     </div>
                   </div>
@@ -211,7 +210,7 @@
                   <div class="card-body">
                     <h5 class="card-title">墨西哥雞捲</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 80</span>
                     </div>
                   </div>
@@ -228,7 +227,7 @@
                   <div class="card-body">
                     <h5 class="card-title">鮭魚沙拉</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 130</span>
                     </div>
                   </div>
@@ -245,7 +244,7 @@
                   <div class="card-body">
                     <h5 class="card-title">鮮蝦沙拉</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 120</span>
                     </div>
                   </div>
@@ -266,9 +265,9 @@
                     <img src="images/products/potatoSalad.jpg" class="card-img-top" alt="potatoSalad">
                   </div>
                   <div class="card-body">
-                    <h5 class="card-title"><a class="default" href="product-page.html">馬鈴薯沙拉</a></h5>
+                    <h5 class="card-title"><a href="product-page.html">馬鈴薯沙拉</a></h5>
                     <div class="product-items-content">
-                      <a class="default" href="product-page.html">營養成份</a>
+                      <a href="product-page.html">營養成份</a>
                       <span>$ 60</span>
                     </div>
                   </div>
@@ -285,7 +284,7 @@
                   <div class="card-body">
                     <h5 class="card-title">雞蛋沙拉</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 60</span>
                     </div>
                   </div>
@@ -302,7 +301,7 @@
                   <div class="card-body">
                     <h5 class="card-title">麵包沙拉</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 60</span>
                     </div>
                   </div>
@@ -319,7 +318,7 @@
                   <div class="card-body">
                     <h5 class="card-title">原味沙拉</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 50</span>
                     </div>
                   </div>
@@ -342,7 +341,7 @@
                   <div class="card-body">
                     <h5 class="card-title">嫩肩牛餐盒</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 120</span>
                     </div>
                   </div>
@@ -359,7 +358,7 @@
                   <div class="card-body">
                     <h5 class="card-title">舒肥雞餐盒</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 100</span>
                     </div>
                   </div>
@@ -376,7 +375,7 @@
                   <div class="card-body">
                     <h5 class="card-title">墨西哥雞捲</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 80</span>
                     </div>
                   </div>
@@ -399,7 +398,7 @@
                   <div class="card-body">
                     <h5 class="card-title">鮭魚沙拉</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 130</span>
                     </div>
                   </div>
@@ -416,7 +415,7 @@
                   <div class="card-body">
                     <h5 class="card-title">鮮蝦沙拉</h5>
                     <div class="product-items-content">
-                      <a class="default" href="#">營養成份</a>
+                      <a href="#">營養成份</a>
                       <span>$ 120</span>
                     </div>
                   </div>
@@ -433,12 +432,12 @@
   </div>
 
   <!-- footer -->
-  <footer class="bg-white p-md-8 py-3 ">
+  <footer class="site-footer bg-white py-5">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mb-4">
+        <div class="col-lg-8">
           <div class="row g-0">
-            <div class="col-md-6 col-12">
+            <div class="col-md-6">
               <div class="info mb-3">
                 <a class="h3" href="index.html">
                   <img src="images/logo.png" alt="" width="28" height="28" class="d-inline-block align-text-top">
@@ -451,7 +450,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6 text-center">
+            <div class="col-md-6 text-center mt-auto">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14459.994326708158!2d121.55794255797353!3d25.034122200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx6LO854mp5Lit5b-D!5e0!3m2!1szh-TW!2stw!4v1677431686428!5m2!1szh-TW!2stw"
                 allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -459,7 +458,7 @@
           </div>
         </div>
         <div class="col-lg-4">
-          <div class="row mb-3">
+          <div class="row my-3">
             <div class="col-3">
               <ul class="social-link p-0 fs-5">
                 <li><a href="#"><i class="bi bi-facebook"></i></a></li>
@@ -471,11 +470,11 @@
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="請輸入 Email" aria-label="subscribeEmail"
                   aria-describedby="subscribeEmail">
-                <button type="button" class="btn input-group-text btn-potatoOrange text-white">訂閱</button>
+                <button type="button" class="btn input-group-text btn-primary text-white">訂閱</button>
               </div>
             </div>
           </div>
-          <span class="d-block text-center">照片均來自網路，純屬個人作業，無商業行為。</span>
+          <span class="d-block text-end">圖片均來自網路，純屬個人作業，無商業行為。</span>
         </div>
       </div>
     </div>

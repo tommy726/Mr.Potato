@@ -1,4 +1,8 @@
 .product-items {
+  a:hover {
+    color: $primary;
+  }
+
   .card {
     height: 100%;
     overflow: hidden;
@@ -7,47 +11,30 @@
   .card-img {
     position: relative;
     overflow: hidden;
+    border-radius: 0;
 
     span>a {
       position: absolute;
       top: 0;
       right: 0;
-      background-color: $potatoGreen;
+      background-color: $success;
       padding: 4px;
       font-size: $h5-font-size;
       color: $white;
       writing-mode: vertical-lr;
-      border-radius: $card-border-radius;
       z-index: 1;
     }
 
     span>a:hover {
-      background-color: $potatoOrange;
+      background-color: $primary;
     }
-  }
 
-  .card:hover {
-    img {
-      transform: scale(1.1, 1.1);
-      transition: all 1s ease-out;
+    .img-transform:hover{
+      img {
+        transform: scale(1.1, 1.1);
+        transition: all 1s ease-out;
+      }
     }
-  }
-
-  .product-items-content {
-    display: flex;
-    justify-content: space-between;
-
-    a:hover {
-      color: $potatoOrange;
-    }
-  }
-
-  .default {
-    color: $potatoText;
-  }
-
-  .default:hover {
-    color: $potatoOrange;
   }
 
   .card-body {
@@ -66,6 +53,15 @@
     }
   }
 
+  .product-items-content {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .default {
+    color: $potatoText;
+  }
+
   .card-footer {
     padding: 0;
     border: 0;
@@ -74,10 +70,11 @@
       background-color: $secondary;
       color: $white;
       width: 100%;
+      border-radius: 0;
     }
 
     .btn:hover {
-      background-color: $potatoOrange;
+      background-color: $primary;
     }
   }
 }

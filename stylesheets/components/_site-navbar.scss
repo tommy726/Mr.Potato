@@ -1,0 +1,13 @@
+.site-navbar {
+  margin-bottom: 62px;
+  .navbar {
+  background-color: #F6F1EB;
+  }
+
+  @include media-breakpoint-up(md) {
+    .navbar {
+      height: 62px;
+    }
+  }
+
+}

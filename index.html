@@ -16,8 +16,8 @@
 <body>
 
   <!-- navbar -->
-  <div class="navbar-space">
-    <nav class="navbar navbar-expand-md navbar-light px-lg-8 py-lg-4 fixed-top bg-primary">
+  <div class="site-navbar">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <h1 class="visually-hidden">Mr.Potato - 首頁</h1>
       <div class="container-xxl">
         <a class="navbar-brand" href="index.html">
@@ -31,23 +31,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html"><i
-                  class="bi bi-house-door-fill"></i>Home</a>
+              <a class="nav-link" href="product-list.html"><i class="bi bi-egg-fried me-1"></i>挑選美食</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="product-list.html"><i class="bi bi-egg-fried"></i>挑選美食</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html"><i class="bi bi-person"></i>會員專區</a>
+              <a class="nav-link" href="login.html"><i class="bi bi-person me-1"></i>會員專區</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link  position-relative" href="#" id="navbarDropdown" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-cart"></i>購物車
-                <span class="position-absolute top-5 start-sm-100 translate-middle badge rounded-pill bg-potatoOrange">
+              <a class="nav-link position-relative" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false"><i class="bi bi-cart"></i>購物車
+                <span class="position-absolute top-5 start-sm-100 translate-middle badge rounded-pill bg-primary">
                   2
                 </span>
               </a>
-              <div class="dropdown-menu dropdown-menu-end px-3 text-end" aria-labelledby="navbarDropdown">
+              <div class="dropdown-menu dropdown-menu-end px-3 mb-3 text-end" aria-labelledby="navbarDropdown">
                 <table class="table text-nowrap">
                   <thead>
                     <tr>
@@ -69,7 +65,7 @@
                     </tr>
                   </tbody>
                 </table>
-                <a href="checkout-cart.html" class="btn btn-sm btn-outline-potatoText">前往購物車</a>
+                <a href="checkout-cart.html" class="btn btn-sm btn-outline-primary white-text-btn">前往購物車</a>
               </div>
             </li>
           </ul>
@@ -79,55 +75,30 @@
   </div>
 
   <!-- banner -->
-  <div class="banner px-lg-8 mb-lg-8">
-    <h2 class="text-center mb-6">讓沙發馬鈴薯的您<br>躺著也能吃到美味健康的餐盒</h2>
-    <div id="carouselExampleControls" class="carousel slide carousel-fade" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-bs-interval="3000">
-          <div class="bg-cover banner-jumbotron" style="background-image: url(images/banner-lunchBox.jpg);">
-            <div class="banner-text text-potatoText">
-              <h3 class="h1">美味、健康、方便 </h3>
-              <p class="fst-italic">- Mr.Potato帶您吃得開心、吃得健康</p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item" data-bs-interval="3000">
-          <div class="bg-cover banner-jumbotron" style="background-image: url(images/banner-steak.jpg);">
-            <div class="banner-text text-potatoText">
-              <h3 class="h1">原味美食，不必到天堂</h3>
-              <p class="fst-italic">- Mr.Potato讓你在世間品嚐天堂美食</p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item" data-bs-interval="3000">
-          <div class="bg-cover banner-jumbotron" style="background-image: url(images/banner-vegetable.jpg);">
-            <div class="banner-text text-potatoText">
-              <h3 class="h1">吃得好，過得更好</h3>
-              <p class="fst-italic">- Mr.Potato，營養、新鮮、安心享用</p>
-            </div>
-          </div>
-        </div>
+  <div class="banner">
+    <div class="bg-cover banner-jumbotron" style="background-image: url(images/banner-vegetable.jpg);">
+      <div class="banner-text text-center">
+        <h2 class="h1 mb-4">讓沙發馬鈴薯的您<br>躺著也能吃到美味健康的餐盒</h2>
+        <a href="#content" class="btn btn-outline-potatoText">Learn more<i class="bi bi-arrow-down-circle ms-2"></i></a>
       </div>
     </div>
   </div>
 
   <!-- product concept -->
-  <section class="bg-white p-md-6 mb-6 my-lg-8">
+  <section class="bg-white py-8" id="content">
     <div class="container">
-      <div class="row g-0">
-        <div class="col-lg-7 p-5 mt-lg-5">
-          <h3 class="h1">忙碌的生活中 <br>Mr.Potato是您健康餐飲的首選。</h3>
+      <div class="row g-0 justify-content-center py-8">
+        <div class="col-lg-6">
+          <h3 class="h2">忙碌的生活中， <br>Mr.Potato是您健康餐飲的首選。</h3>
           <p class="text-secondary">您也是每天早早起床，晚晚到家嗎？
             <br>下班拖著疲累的身軀，還是堅持踏進了健身房，但回家後總是吃著隨便買的速食、滷味、鹹酥雞？
             <br>明明已經騰出時間去運動，身材的變化卻總是不如預期嗎？
-            <br><span class="h4 text-potatoOrange fw-bold">不是您不夠努力，可能只是吃得不對而已!</span>
+            <br><span class="h4 text-primary fw-bold">不是您不夠努力，可能只是吃得不對而已!</span>
             <br>我們提供了方便的訂購方式、新鮮的食材以及口感美味的食品，讓您的生活更加輕鬆。
           </p>
-          <div class="text-end">
-            <a href="product-list.html" class="btn btn-potatoOrange text-white">現在就開始改變</a>
-          </div>
+          <a href="product-list.html" class="btn btn-primary text-white">現在就開始改變</a>
         </div>
-        <div class="col-lg-5 d-lg-block d-none figure">
+        <div class="col-lg-4 d-lg-block d-none figure">
           <img class="figure-img rounded img-fluid" src="images/potato.jpg" alt="potato">
           <figcaption class="figure-caption text-end">嚴選每日新鮮食材，讓您吃得安心。</figcaption>
         </div>
@@ -136,8 +107,8 @@
   </section>
 
   <!-- menu-list -->
-  <div class="container-fluid menu-list py-4 py-md-8 px-0 my-4 my-lg-8">
-    <ul class="row justify-content-center ps-0 mx-0">
+  <div class="container-fluid menu-list py-4 py-md-8 my-4 my-lg-8">
+    <ul class="row justify-content-center ps-0 m-0">
       <li class="col-4 bg-cover" style="background-image: url(images/salad.jpg);">
         <a href="product-list.html#list-vegetarian">純素主義</a>
       </li>
@@ -151,8 +122,8 @@
   </div>
 
   <!-- publicity -->
-  <section class="container-fulid publicity bg-white text-center px-3 my-4 my-lg-8">
-    <h4 class="display-6 my-5 my-md-8">Why Mr.Potato</h4>
+  <section class="container-fulid publicity bg-white text-center my-4 my-lg-8">
+    <h4 class="display-6 my-5 my-md-8 text-primary">Why Mr.Potato</h4>
     <p class="mb-6">一個健康的身體，需要好的營養和養分。
       <br>Mr. Potato 提供的健康餐盒，能讓您不用擔心吃不到健康食物的困擾。
     </p>
@@ -164,20 +135,43 @@
 
   <!-- product items -->
   <div class="product-items container my-4 my-lg-8">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
       <div class="col">
         <div class="card">
           <div class="card-img">
             <span><a href="product-list.html#list-vegetarian">純素主義</a></span>
-            <img src="images/products/potatoSalad.jpg" class="card-img-top" alt="potatoSalad">
+            <a href="product-page.html" class="img-transform"><img src="images/products/potatoSalad.jpg"
+                class="card-img-top" alt="potatoSalad"></a>
           </div>
-          <div class="card-body">
+          <div class="card-body p-4">
             <div class="product-items-content">
               <h5 class="card-title"><a class="default" href="product-page.html">馬鈴薯沙拉</a></h5>
               <a href="product-page.html">營養成份</a>
             </div>
             <p class="card-text">
-              營養豐富的馬鈴薯沙拉， 拌上頂級橄欖油，撒上少許現磨玫瑰鹽、黑胡椒，搭配當季的新鮮蔬果，色香味俱全，邀請您一起享用！
+              營養豐富的馬鈴薯沙拉， 拌上頂級橄欖油，撒上現磨玫瑰鹽、黑胡椒，搭配當季的新鮮蔬果，色香味俱全，邀請您一起享用！
+            </p>
+            <span>$ 60</span>
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn">加入購物車</button>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="card-img">
+            <span><a href="product-list.html#list-vegetarian">純素主義</a></span>
+            <a href="product-page.html" class="img-transform"><img src="images/products/potatoSalad.jpg"
+                class="card-img-top" alt="potatoSalad"></a>
+          </div>
+          <div class="card-body p-4">
+            <div class="product-items-content">
+              <h5 class="card-title"><a class="default" href="product-page.html">馬鈴薯沙拉</a></h5>
+              <a href="product-page.html">營養成份</a>
+            </div>
+            <p class="card-text">
+              營養豐富的馬鈴薯沙拉， 拌上頂級橄欖油，撒上現磨玫瑰鹽、黑胡椒，搭配當季的新鮮蔬果，色香味俱全，邀請您一起享用！
             </p>
             <span>$ 60</span>
           </div>
@@ -190,9 +184,10 @@
         <div class="card">
           <div class="card-img">
             <span><a href="product-list.html#list-meat">原肉至上</a></span>
-            <img src="images/products/chickenSalad.jpg" class="card-img-top" alt="chickenSalad">
+            <a href="product-page.html" class="img-transform"><img src="images/products/chickenSalad.jpg"
+                class="card-img-top" alt="chickenSalad"></a>
           </div>
-          <div class="card-body">
+          <div class="card-body p-4">
             <div class="product-items-content">
               <h5 class="card-title">舒肥雞餐盒</h5>
               <a href="#">營養成份</a>
@@ -211,14 +206,15 @@
         <div class="card">
           <div class="card-img">
             <span><a href="product-list.html#list-seafood">就愛海味</a></span>
-            <img src="images/products/shrimpSalad.jpg" class="card-img-top" alt="shrimpSalad">
+            <a href="product-page.html" class="img-transform"><img src="images/products/shrimpSalad.jpg"
+                class="card-img-top" alt="shrimpSalad"></a>
           </div>
-          <div class="card-body">
+          <div class="card-body p-4">
             <div class="product-items-content">
               <h5 class="card-title">鮮蝦沙拉</h5>
               <a href="#">營養成份</a>
             </div>
-            <p class="card-text">今天想吃海鮮嗎？滿滿的大白蝦搭配上豐富蔬菜，讓爾偶想品嚐海味的您，悠遊於大海中～</p>
+            <p class="card-text">今天想吃海鮮嗎？滿滿的大白蝦搭配上豐富蔬菜，讓偶爾想品嚐海味的您，悠遊於大海中～</p>
             <span>$ 120</span>
           </div>
           <div class="card-footer p-0 border-0">
@@ -230,12 +226,12 @@
   </div>
 
   <!-- footer -->
-  <footer class="bg-white p-md-8 py-3">
+  <footer class="site-footer bg-white py-5">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mb-4">
+        <div class="col-lg-8">
           <div class="row g-0">
-            <div class="col-md-6 col-12">
+            <div class="col-md-6">
               <div class="info mb-3">
                 <a class="h3" href="index.html">
                   <img src="images/logo.png" alt="" width="28" height="28" class="d-inline-block align-text-top">
@@ -248,7 +244,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6 text-center">
+            <div class="col-md-6 text-center mt-auto">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14459.994326708158!2d121.55794255797353!3d25.034122200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx6LO854mp5Lit5b-D!5e0!3m2!1szh-TW!2stw!4v1677431686428!5m2!1szh-TW!2stw"
                 allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -256,7 +252,7 @@
           </div>
         </div>
         <div class="col-lg-4">
-          <div class="row mb-3">
+          <div class="row my-3">
             <div class="col-3">
               <ul class="social-link p-0 fs-5">
                 <li><a href="#"><i class="bi bi-facebook"></i></a></li>
@@ -268,11 +264,11 @@
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="請輸入 Email" aria-label="subscribeEmail"
                   aria-describedby="subscribeEmail">
-                <button type="button" class="btn input-group-text btn-potatoOrange text-white">訂閱</button>
+                <button type="button" class="btn input-group-text btn-primary text-white">訂閱</button>
               </div>
             </div>
           </div>
-          <span class="d-block text-center">照片均來自網路，純屬個人作業，無商業行為。</span>
+          <span class="d-block text-end">圖片均來自網路，純屬個人作業，無商業行為。</span>
         </div>
       </div>
     </div>

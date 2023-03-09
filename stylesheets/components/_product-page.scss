@@ -1,12 +1,7 @@
-.quantity {
-  width: 66px !important; 
-}
+.product-page {
+  border-bottom: 2px solid #969696;
 
-.tab-content {
-  font-size: small;
-}
-
-.flex-end {
-  display: flex;
-  justify-content: end;
+  .quantity {
+    width: 66px !important; 
+  }
 }

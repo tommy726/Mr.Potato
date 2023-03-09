@@ -1,47 +1,12 @@
-$banner-jumbotron-height: 200px;
-$banner-jumbotron-wight: 100%;
-
 .banner-jumbotron {
-  padding: $spacer * 4;
-  color: $white;
-  height: $banner-jumbotron-height;
-  width: $banner-jumbotron-wight;
+  height: calc(100vh - 62px);
+  width: 100%;
   margin: 0 auto;
-  display: flex;
+  @include flex-items-center;
   flex-direction: column;
-  justify-content: end;
-  align-items: center;
 }
 
 .banner-text {
   background-color: rgba(255, 255, 255, .65);
-  padding: $spacer * .8;
-}
-
-@include media-breakpoint-up(md) {
-  .banner-jumbotron {
-    height: $banner-jumbotron-height * 1.5;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  .banner-jumbotron {
-    height: $banner-jumbotron-height * 2.25;
-    width: $banner-jumbotron-wight * .9;
-  }
-
-  .banner-text {
-    padding: $spacer * 2;
-  }
-}
-
-@include media-breakpoint-up(xxl) {
-  .banner-jumbotron {
-    height: $banner-jumbotron-height * 3;
-    width: $banner-jumbotron-wight * .7;
-  }
-
-  .banner-text {
-    padding: $spacer * 3;
-  }
+  padding: $spacer * 3;
 }

@@ -4,12 +4,12 @@ $offset: 10vw;
   padding: $spacer * 3 0;
 
   span {
-    color: $potatoGreen;
+    color: $success;
   }
 
   h4 {
     position: relative;
-    color: $potatoOrange;
+    color: $potatoText;
   }
 
   h4::before,

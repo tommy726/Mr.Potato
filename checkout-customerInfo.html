@@ -16,8 +16,8 @@
 <body class="d-flex flex-column min-vh-100">
 
   <!-- navbar -->
-  <div class="navbar-space">
-    <nav class="navbar navbar-expand-md navbar-light px-lg-8 py-lg-4 fixed-top bg-primary">
+  <div class="site-navbar">
+    <nav class="navbar navbar-expand-md navbar-light fixed-top">
       <h1 class="visually-hidden">Mr.Potato - 填寫訂單資料</h1>
       <div class="container-xxl">
         <a class="navbar-brand" href="index.html">
@@ -31,18 +31,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html"><i class="bi bi-house-door-fill"></i>Home</a>
+              <a class="nav-link" href="index.html"><i class="bi bi-house-door-fill me-1"></i>Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="product-list.html"><i class="bi bi-egg-fried"></i>挑選美食</a>
+              <a class="nav-link" aria-current="page" href="product-list.html"><i
+                  class="bi bi-egg-fried me-1"></i>挑選美食</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html"><i class="bi bi-person"></i>會員專區</a>
+              <a class="nav-link" href="login.html"><i class="bi bi-person me-1"></i>會員專區</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link active position-relative" aria-current="page" href="#" id="navbarDropdown"
-                role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-cart"></i>購物車
-                <span class="position-absolute top-5 start-sm-100 translate-middle badge rounded-pill bg-potatoOrange">
+              <a class="nav-link active position-relative" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-cart me-1"></i>購物車
+                <span class="position-absolute top-5 start-sm-100 translate-middle badge rounded-pill bg-primary">
                   2
                 </span>
               </a>
@@ -57,18 +58,18 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td scope="row" class="text-start"><a href="#"><i class="bi bi-trash3"></i></a>馬鈴薯沙拉</td>
+                      <td scope="row" class="text-start"><a href="#"><i class="bi bi-trash3 me-1"></i></a>馬鈴薯沙拉</td>
                       <td class="text-center">2</td>
                       <td class="text-end">$ 120</td>
                     </tr>
                     <tr>
-                      <td scope="row" class="text-start"><a href="#"><i class="bi bi-trash3"></i></a>嫩肩牛餐盒</td>
+                      <td scope="row" class="text-start"><a href="#"><i class="bi bi-trash3 me-1"></i></a>嫩肩牛餐盒</td>
                       <td class="text-center">1</td>
                       <td class="text-end">$ 120</td>
                     </tr>
                   </tbody>
                 </table>
-                <a href="checkout-cart.html" class="btn btn-sm btn-outline-potatoText">前往購物車</a>
+                <a href="checkout-cart.html" class="btn btn-sm btn-outline-primary white-text-btn">前往購物車</a>
               </div>
             </li>
           </ul>
@@ -102,7 +103,7 @@
           data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">顯示訂單資訊<i
             class="bi bi-arrow-down-circle"></i>
         </button>
-        <div class="collapse" id="collapseExample">
+        <div class="collapse mb-5" id="collapseExample">
           <div class="card card-body">
             <div class="table-responsive">
               <table class="table align-middle text-nowrap">
@@ -134,7 +135,7 @@
                     <th scope="row" class="text-end"><label for="coupon" class="form-label mb-0">優惠碼：</label></th>
                     <td colspan="3"><input type="text" class="form-control form-control-sm text-center" id="coupon"
                         placeholder="請輸入優惠碼" value="PotatoIsGood" disabled></td>
-                    <td class="text-end"><button class="btn btn-potatoGreen" disabled>已套用優惠</button></td>
+                    <td class="text-end"><button class="btn btn-success" disabled>已套用優惠</button></td>
                   </tr>
                   <tr>
                     <td scope="row" colspan="3" class="text-end fw-bold">合計</td>
@@ -157,10 +158,10 @@
         <form class="row g-3 needs-validation" novalidate>
           <div class="col-md-6 mb-3">
             <div class="card">
-              <div class="card-header text-center bg-potatoYellow">
+              <div class="card-header text-center bg-warning">
                 <h5 class="card-title mb-0">顧客資訊</h5>
               </div>
-              <div class="card-body">
+              <div class="card-body p-4">
                 <div class="mb-3">
                   <label for="name" class="form-label">*姓名</label>
                   <input type="text" class="form-control" id="name" placeholder="王小明" required>
@@ -191,10 +192,10 @@
           </div>
           <div class="col-md-6 mb-3">
             <div class="card h-100">
-              <div class="card-header text-center bg-potatoYellow">
+              <div class="card-header text-center bg-warning">
                 <h5 class="card-title mb-0">外送資訊</h5>
               </div>
-              <div class="card-body">
+              <div class="card-body p-4">
                 <div class="mb-3">
                   <label for="city" class="form-label">*縣 / 市區</label>
                   <input type="text" class="form-control" id="city" placeholder="台北市信義區" required>
@@ -204,7 +205,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="address" class="form-label">*地址</label>
-                  <input type="text" class="form-control" id="tel" placeholder="市府路45號" required>
+                  <input type="text" class="form-control" id="address" placeholder="市府路45號" required>
                   <div class="invalid-feedback">
                     請輸入地址
                   </div>
@@ -229,8 +230,8 @@
             </div>
           </div>
           <div class="text-end">
-            <a href="checkout-cart.html" class="btn btn-outline-potatoOrange">返回購物車</a></button>
-            <button type="submit" class="btn btn-outline-potatoText">確認結帳</button>
+            <a href="checkout-cart.html" class="btn btn-outline-secondary">返回購物車</a></button>
+            <button type="submit" class="btn btn-outline-primary white-text-btn">確認結帳</button>
           </div>
         </form>
       </div>
@@ -239,12 +240,12 @@
 
 
   <!-- footer -->
-  <footer class="bg-white p-md-8 py-3 ">
+  <footer class="site-footer bg-white py-5">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 mb-4">
+        <div class="col-lg-8">
           <div class="row g-0">
-            <div class="col-md-6 col-12">
+            <div class="col-md-6">
               <div class="info mb-3">
                 <a class="h3" href="index.html">
                   <img src="images/logo.png" alt="" width="28" height="28" class="d-inline-block align-text-top">
@@ -257,7 +258,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6 text-center">
+            <div class="col-md-6 text-center mt-auto">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14459.994326708158!2d121.55794255797353!3d25.034122200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abb6da80a7ad%3A0xacc4d11dc963103c!2z5Y-w5YyXMTAx6LO854mp5Lit5b-D!5e0!3m2!1szh-TW!2stw!4v1677431686428!5m2!1szh-TW!2stw"
                 allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -265,7 +266,7 @@
           </div>
         </div>
         <div class="col-lg-4">
-          <div class="row mb-3">
+          <div class="row my-3">
             <div class="col-3">
               <ul class="social-link p-0 fs-5">
                 <li><a href="#"><i class="bi bi-facebook"></i></a></li>
@@ -277,11 +278,11 @@
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="請輸入 Email" aria-label="subscribeEmail"
                   aria-describedby="subscribeEmail">
-                <button type="button" class="btn input-group-text btn-potatoOrange text-white">訂閱</button>
+                <button type="button" class="btn input-group-text btn-primary text-white">訂閱</button>
               </div>
             </div>
           </div>
-          <span class="d-block text-center">照片均來自網路，純屬個人作業，無商業行為。</span>
+          <span class="d-block text-end">圖片均來自網路，純屬個人作業，無商業行為。</span>
         </div>
       </div>
     </div>
