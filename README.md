@@ -1,6 +1,10 @@
 # Mr.Potato
 
-## 使用技術:
+## DEMO
+
+https://tommy726.github.io/Mr.Potato/
+
+## 使用技術
 
 <ul>
   <li>Vue.js</li>
