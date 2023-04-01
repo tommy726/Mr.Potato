@@ -1,0 +1,64 @@
+$offset: 10vw;
+
+.publicity {
+  padding: $spacer * 3 0;
+
+  span {
+    color: $success;
+  }
+
+  h4 {
+    position: relative;
+    color: $potatoText;
+  }
+
+  h4::before,
+  h4::after {
+    position: absolute;
+    content: "";
+    background-color: $potatoText;
+    width: 7.5%;
+    height: 2px;
+    top: 50%;
+  }
+
+  h4::before {
+    left: $offset * .5;
+  }
+
+  h4::after {
+    right: $offset * .5;
+  }
+
+  @include media-breakpoint-up(sm) {
+    h4::before {
+      left: $offset;
+    }
+
+    h4::after {
+      right: $offset;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: $spacer * 8 0;
+    
+    h4::before {
+      left: $offset * 2;
+    }
+
+    h4::after {
+      right: $offset * 2;
+    }
+  }
+
+  @include media-breakpoint-up(xxl) {
+    h4::before {
+      left: $offset * 3;
+    }
+
+    h4::after {
+      right: $offset * 3;
+    }
+  }
+}

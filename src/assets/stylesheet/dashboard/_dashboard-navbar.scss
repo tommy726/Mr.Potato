@@ -1,0 +1,21 @@
+.dashboard-navbar {
+  margin-bottom: 62px;
+
+  @media (min-width: 767.98px) {
+    .navbar {
+      height: 62px;
+    }
+  }
+
+  a {
+    color: $warning;
+  }
+
+  a:hover {
+    color: $info;
+  }
+
+  .router-link-active {
+    color: $info;
+  }
+}

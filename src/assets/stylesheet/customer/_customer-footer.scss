@@ -1,0 +1,33 @@
+.customer-footer {
+  font-size: $font-size-sm;
+
+  a:hover{
+    color: $primary;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      padding: 3px;
+    }
+  }
+
+  .info-border {
+    border-right: 1px solid $potatoText;
+  }
+
+  .social-link {
+    @include flex-items-center;
+    margin-bottom: 0;
+
+    li {
+      margin-left: $spacer;
+    }
+  }
+
+  .row {
+    align-items: center;
+  }
+}

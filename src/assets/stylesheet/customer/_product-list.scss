@@ -1,0 +1,13 @@
+.product-list {
+  .list-group-item {
+    border: 0;
+
+    @include media-breakpoint-down(md) {
+      padding: 0;
+    }
+  }
+}
+
+.top {
+  top: 82px;
+}

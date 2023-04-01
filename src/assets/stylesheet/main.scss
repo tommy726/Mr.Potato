@@ -1,0 +1,19 @@
+@import '~bootstrap/scss/functions';
+@import 'helper/variables';
+@import '~bootstrap/scss/mixins';
+
+@import '~bootstrap/scss/bootstrap';
+
+// custom
+@import 'shared/utilities';
+@import 'customer/customer-navbar';
+@import 'customer/customer-footer';
+@import 'customer/banner';
+@import 'customer/menu-list';
+@import 'customer/publicity';
+@import 'customer/product-item';
+@import 'customer/product-list';
+@import 'customer/product-page';
+@import 'customer/checkouts';
+@import 'dashboard/dashboard-navbar';
+@import 'dashboard/dashboard-sidebar';

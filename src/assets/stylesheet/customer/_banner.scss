@@ -1,0 +1,12 @@
+.banner-jumbotron {
+  height: calc(100vh - 62px);
+  width: 100%;
+  margin: 0 auto;
+  @include flex-items-center;
+  flex-direction: column;
+}
+
+.banner-text {
+  background-color: rgba(255, 255, 255, .65);
+  padding: $spacer * 3;
+}

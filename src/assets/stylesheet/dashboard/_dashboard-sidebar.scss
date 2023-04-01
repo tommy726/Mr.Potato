@@ -1,0 +1,13 @@
+.dashboard-sidebar {
+  a {
+    color: $warning;
+  }
+
+  a:hover {
+    color: $info;
+  }
+
+  .router-link-active {
+    color: $info;
+  }
+}
