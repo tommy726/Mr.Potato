@@ -63,6 +63,7 @@ export default {
     ...mapActions('productsModules', ['getProducts']),
     getCategory() {
       this.productCategory = this.$route.params.productCategory;
+      window.scrollTo(0, 0);
     },
   },
   computed: {
