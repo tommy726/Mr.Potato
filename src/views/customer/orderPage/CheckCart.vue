@@ -125,7 +125,6 @@ export default {
         } else {
           vm.coupon_code = '';
         }
-        // localStorage.setItem('couponCode', JSON.stringify(vm.coupon_code));
         const { message } = response.data;
         const status = response.data.success;
         vm.$store.dispatch('alertModules/updateMessage', { message, status });
