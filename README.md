@@ -1,6 +1,9 @@
 # Mr.Potato
 
-## 使用技術:
+##DEMO
+<a href=https://tommy726.github.io/Mr.Potato/"" target="_blank">https://tommy726.github.io/Mr.Potato/</a>
+
+## 使用技術
 
 <ul>
   <li>Vue.js</li>
