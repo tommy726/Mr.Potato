@@ -1,7 +1,8 @@
 # Mr.Potato
 
-##DEMO
-<a href=https://tommy726.github.io/Mr.Potato/"" target="_blank">https://tommy726.github.io/Mr.Potato/</a>
+## DEMO
+
+<a href="https://tommy726.github.io/Mr.Potato/" target="_blank">https://tommy726.github.io/Mr.Potato/</a>
 
 ## 使用技術
 
