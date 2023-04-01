@@ -2,7 +2,7 @@
 
 ## DEMO
 
-<a href="https://tommy726.github.io/Mr.Potato/" target="_blank">https://tommy726.github.io/Mr.Potato/</a>
+https://tommy726.github.io/Mr.Potato/
 
 ## 使用技術
 
