@@ -6,11 +6,10 @@
         class="bg-cover banner-jumbotron"
         :style="{ backgroundImage: `url(${require('@/assets/images/banner-vegetable.jpg')})` }"
       >
-        <div class="banner-text text-center">
+        <div class="banner-text text-center text-black">
           <h2 class="h1 mb-4">讓沙發馬鈴薯的您<br />躺著也能吃到美味健康的餐盒</h2>
           <a href="#content" class="btn btn-outline-potatoText"
-            >Learn more<i class="bi bi-arrow-down-circle ms-2"></i
-          ></a>
+            >Learn more<i class="fa-solid fa-angles-down ms-2"></i></a>
         </div>
       </div>
     </div>
