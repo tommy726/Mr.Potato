@@ -12,6 +12,7 @@ https://tommy726.github.io/Mr.Potato/
   <li>Vue Router</li>
   <li>vee-validate</li>
   <li>vue-axios</li>
+  <li>AOS</li>  
   <li>bootstrap</li>
   <li>ESLint with Standard</li>
 </ul>
