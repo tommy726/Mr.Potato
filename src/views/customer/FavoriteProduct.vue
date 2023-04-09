@@ -6,7 +6,7 @@
         <div class="col-md-8">
           <h2 class="h1 mb-4 mb-md-8">收藏商品</h2>
           <ProductsItem :productData="filterFavorite" />
-          <div v-if="!filterFavorite.length" class="text-center">
+          <div v-if="!filterFavorite.length" class="text-center my-6">
             <h3 class="mb-5">目前沒有收藏中的商品!</h3>
             <router-link to="/product_list/all" class="btn btn-primary text-white"
                 >點我去逛逛
