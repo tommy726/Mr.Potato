@@ -14,4 +14,8 @@
   .dropdown-menu {
     min-width: 300px;
   }
+
+  .router-link-active {
+    color: $primary;
+  }
 }

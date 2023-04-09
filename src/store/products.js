@@ -4,7 +4,9 @@ export default {
   namespaced: true,
   state: {
     filterProducts: [],
-    randomProducts: [],
+    lunchBoxProducts: [],
+    saladProducts: [],
+    favoriteProducts: JSON.parse(localStorage.getItem('favoriteProducts')) || [],
   },
   actions: {
     getProducts(context) {
@@ -13,38 +15,47 @@ export default {
       axios.get(api).then((response) => {
         const filterProducts = response.data.products.filter((item) => item.is_enabled === 1);
         context.commit('FILTER_PRODUCTS', filterProducts);
-        context.dispatch('getRandomProduct', filterProducts);
+        context.dispatch('getLunchBoxProducts');
+        context.dispatch('getSaladProducts');
         context.dispatch('updateLoading', false, { root: true });
       });
     },
-    getRandomProduct(context, array) {
-      let currentIndex = array.length;
-      let temporaryValue;
-      let randomIndex;
-      const newArray = [...array];
-      while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        temporaryValue = newArray[currentIndex];
-        newArray[currentIndex] = newArray[randomIndex];
-        newArray[randomIndex] = temporaryValue;
+    getLunchBoxProducts({ state, commit }) {
+      const lunchBoxProducts = state.filterProducts.filter((item) => item.price >= 100);
+      commit('LUNCH_BOX_PRODUCTS', lunchBoxProducts);
+    },
+    getSaladProducts({ state, commit }) {
+      const saladProducts = state.filterProducts.filter((item) => item.category === '純素主義');
+      commit('SALAD_PRODUCTS', saladProducts);
+    },
+    addToFavorite({ state, dispatch }, { id, item }) {
+      if (!state.favoriteProducts.includes(id)) {
+        state.favoriteProducts.push(id, item);
+        dispatch('alertModules/updateMessage', { message: '已加入收藏', status: true }, { root: true });
+      } else {
+        const index = state.favoriteProducts.findIndex((i) => i === id);
+        state.favoriteProducts.splice(index, 2);
+        dispatch('alertModules/updateMessage', { message: '已從收藏中刪除', status: false }, { root: true });
       }
-      const randomProducts = newArray.slice(0, 3);
-      context.commit('RANDOM_PRODUCTS', randomProducts);
+      localStorage.setItem('favoriteProducts', JSON.stringify(state.favoriteProducts));
     },
   },
   mutations: {
     FILTER_PRODUCTS(state, data) {
       state.filterProducts = data;
     },
-    RANDOM_PRODUCTS(state, data) {
-      state.randomProducts = data;
+    LUNCH_BOX_PRODUCTS(state, data) {
+      state.lunchBoxProducts = data;
+    },
+    SALAD_PRODUCTS(state, data) {
+      state.saladProducts = data;
     },
   },
   getters: {
     filterProducts: (state) => state.filterProducts,
-    randomProducts: (state) => state.randomProducts,
+    lunchBoxProducts: (state) => state.lunchBoxProducts,
+    saladProducts: (state) => state.saladProducts,
+    favoriteProducts: (state) => state.favoriteProducts,
   },
   module: {
   },

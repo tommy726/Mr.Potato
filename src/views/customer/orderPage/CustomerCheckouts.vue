@@ -79,7 +79,9 @@
     </div>
     <div class="text-end mt-3">
       <router-link to="/" class="btn btn-outline-secondary">取消訂單</router-link>
-      <button @click="checkouts" class="btn btn-outline-primary white-text-btn ms-2">確認付款</button>
+      <button @click="checkouts" type="button" class="btn btn-outline-primary white-text-btn ms-2">
+        確認付款
+      </button>
     </div>
   </div>
 </template>

@@ -236,9 +236,10 @@ export default {
         message: values.message,
       };
       vm.$http.post(api, { data: userInfo }).then((response) => {
-        const { message } = response.data;
-        const status = response.data.success;
-        vm.$store.dispatch('alertModules/updateMessage', { message, status });
+        vm.$store.dispatch('alertModules/updateMessage', {
+          message: response.data.message,
+          status: response.data.success,
+        });
         if (response.data.success) {
           const path = response.data.orderId;
           vm.getCart();

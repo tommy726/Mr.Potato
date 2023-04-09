@@ -25,10 +25,6 @@
       z-index: 1;
     }
 
-    span>a:hover {
-      background-color: $primary;
-    }
-
     .img-transform:hover{
       img {
         transform: scale(1.1, 1.1);

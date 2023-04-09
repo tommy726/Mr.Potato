@@ -201,7 +201,7 @@
                         type="text"
                         class="form-control"
                         id="description"
-                        placeholder="熱量,蛋白質,碳水,脂肪,納"
+                        placeholder='{"kcal":","protein":","carbs":","fat":","sodium":"}'
                       ></textarea>
                     </label>
                   </div>
@@ -299,13 +299,15 @@ export default {
       }
       vm.$http[httpMethod](api, { data: vm.tempProduct }).then((response) => {
         if (response.data.success) {
-          const { message } = response.data;
-          const status = response.data.success;
-          vm.$store.dispatch('alertModules/updateMessage', { message, status });
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: response.data.message,
+            status: response.data.success,
+          });
         } else {
-          const message = '請確認api是否正確';
-          const status = response.data.success;
-          vm.$store.dispatch('alertModules/updateMessage', { message, status });
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: response.data.message,
+            status: response.data.success,
+          });
         }
         vm.productModal.hide();
         vm.getProducts();
@@ -315,9 +317,10 @@ export default {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
       vm.$http.delete(api).then((response) => {
-        const { message } = response.data;
-        const status = response.data.success;
-        vm.$store.dispatch('alertModules/updateMessage', { message, status });
+        vm.$store.dispatch('alertModules/updateMessage', {
+          message: response.data.message,
+          status: response.data.success,
+        });
         vm.removeModal.hide();
         vm.getProducts();
       });
@@ -340,14 +343,16 @@ export default {
             vm.tempProduct.imageUrl = response.data.imageUrl;
             vm.fileUploading = false;
           } else if (response.data.message === '檔案格式錯誤') {
-            const message = '檔案格式錯誤';
-            const status = response.data.success;
-            vm.$store.dispatch('alertModules/updateMessage', { message, status });
+            vm.$store.dispatch('alertModules/updateMessage', {
+              message: '檔案格式錯誤',
+              status: response.data.success,
+            });
             vm.fileUploading = false;
           } else {
-            const message = '圖片過大，請勿超過1MB，請重新選擇圖片';
-            const status = response.data.success;
-            vm.$store.dispatch('alertModules/updateMessage', { message, status });
+            vm.$store.dispatch('alertModules/updateMessage', {
+              message: '圖片過大，請勿超過1MB，請重新選擇圖片',
+              status: response.data.success,
+            });
             vm.fileUploading = false;
           }
         });

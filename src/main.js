@@ -11,6 +11,8 @@ import { localize, setLocale } from '@vee-validate/i18n';
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { createApp } from 'vue';
 import App from './App.vue';
 import currencyFilter from './filters/currency';
@@ -44,6 +46,7 @@ app.component('isLoading', Loading)
   .mount('#app');
 
 axios.defaults.withCredentials = true;
+AOS.init();
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {

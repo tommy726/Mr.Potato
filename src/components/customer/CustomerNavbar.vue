@@ -24,11 +24,16 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" ref="navbarCollapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <router-link to="/admin/products" tag="a" class="nav-link"
-                ><i class="fa-solid fa-user-gear me-1"></i>後台管理
+                ><i class="fa-solid fa-user me-1"></i>會員專區
+              </router-link>
+            </li>
+            <li class="nav-item">
+              <router-link to="/favorite" tag="a" class="nav-link"
+                ><i class="fa-solid fa-heart me-1"></i>收藏商品
               </router-link>
             </li>
             <li class="nav-item">
@@ -115,10 +120,16 @@
 </template>
 
 <script>
+import { Collapse } from 'bootstrap';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'CustomerNavbar',
+  data() {
+    return {
+      router: this.$route.path,
+    };
+  },
   methods: {
     removeCart(id) {
       this.$store.dispatch('cartsModules/removeCart', id);
@@ -128,8 +139,16 @@ export default {
   computed: {
     ...mapGetters('cartsModules', ['cart']),
   },
+  watch: {
+    $route() {
+      this.navbarCollapse.hide();
+    },
+  },
   created() {
     this.getCart();
+  },
+  mounted() {
+    this.navbarCollapse = new Collapse(this.$refs.navbarCollapse);
   },
 };
 </script>

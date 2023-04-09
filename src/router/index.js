@@ -17,9 +17,19 @@ const routes = [
         component: () => import('@/views/customer/LoginPage.vue'),
       },
       {
+        path: '/signup',
+        name: 'Signup',
+        component: () => import('@/views/customer/SignupPage.vue'),
+      },
+      {
         path: '/product_list/:productCategory',
         name: 'List',
         component: () => import('@/views/customer/ProductList.vue'),
+      },
+      {
+        path: '/favorite',
+        name: 'Favorite',
+        component: () => import('@/views/customer/FavoriteProduct.vue'),
       },
       {
         path: '/product_page/:productId',

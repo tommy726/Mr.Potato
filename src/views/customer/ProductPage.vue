@@ -1,15 +1,16 @@
 <template>
   <div>
+    <PageBanner />
     <div class="product-page container mb-4 pt-md-6 pb-6">
       <div class="row justify-content-center">
         <div class="col-md-4 d-flex flex-column justify-content-center py-3">
           <nav aria-label="current page" class="d-md-none">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <router-link to="/">Home</router-link>
+                <router-link to="/">首頁</router-link>
               </li>
               <li class="breadcrumb-item">
-                <a @click.prevent="goToProductList(`${product.category}`)" href="#">
+                <a @click.prevent="goToProductList(product.category)" href="#">
                   {{ product.category }}</a
                 >
               </li>
@@ -29,7 +30,7 @@
           <nav aria-label="current page" class="d-none d-md-block">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <router-link to="/">Home</router-link>
+                <router-link to="/">首頁</router-link>
               </li>
               <li class="breadcrumb-item">
                 <a @click.prevent="goToProductList(product.category)" href="#">
@@ -39,8 +40,18 @@
               <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
             </ol>
           </nav>
-          <h2 class="my-4 fw-bolder">{{ product.title }}</h2>
-          <p>
+          <div class="d-flex align-items-center justify-content-between">
+            <h2 class="my-4 fw-bolder">{{ product.title }}</h2>
+            <a
+              @click.prevent="addToFavorite(product.id, product)"
+              href="#"
+              aria-label="favoriteProduct"
+              class="h2"
+              :class="{ 'text-primary': favoriteProducts.includes(product.id) }"
+              ><i class="fa-solid fa-heart"></i
+            ></a>
+          </div>
+          <p class="fs-5">
             {{ product.description }}
           </p>
           <p class="fs-3 fw-bold mb-0 text-end">{{ $filters.currency(product.price) }}</p>
@@ -73,23 +84,23 @@
               <tbody>
                 <tr>
                   <th scope="row">熱量</th>
-                  <td>{{ content[0] }}</td>
+                  <td>{{ nutrientFacts.kcal }}</td>
                 </tr>
                 <tr>
                   <th scope="row">蛋白質</th>
-                  <td>{{ content[1] }}</td>
+                  <td>{{ nutrientFacts.protein }}</td>
                 </tr>
                 <tr>
                   <th scope="row">碳水化合物</th>
-                  <td>{{ content[2] }}</td>
+                  <td>{{ nutrientFacts.carbs }}</td>
                 </tr>
                 <tr>
                   <th scope="row">脂肪</th>
-                  <td>{{ content[3] }}</td>
+                  <td>{{ nutrientFacts.fat }}</td>
                 </tr>
                 <tr>
                   <th scope="row">鈉</th>
-                  <td>{{ content[4] }}</td>
+                  <td>{{ nutrientFacts.sodium }}</td>
                 </tr>
               </tbody>
             </table>
@@ -105,11 +116,20 @@
         </div>
       </div>
     </div>
-    <div class="container my-5 my-xxl-8">
+    <div class="container py-4 my-5 my-lg-8">
       <div class="row justify-content-center">
-        <div class="col-md-8">
-          <h3 class="text-center text-primary mb-4">也許您還想吃？</h3>
-          <ProductsItem :productData="randomProducts"></ProductsItem>
+        <div
+          class="col-md-8"
+          data-aos="fade-zoom-in"
+          data-aos-offset="0"
+          data-aos-duration="800"
+          data-aos-anchor-placement="top-center"
+        >
+          <h3 class="text-center text-primary mb-6">
+            <span v-if="product.category === '純素主義'">搭配主食，營養更均衡</span>
+            <span v-else>來點沙拉，補充膳食纖維</span>
+          </h3>
+          <ProductsItem :productData="recommendedProducts" />
         </div>
       </div>
     </div>
@@ -118,37 +138,37 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import PageBanner from '@/components/customer/PageBanner.vue';
 import ProductsItem from '@/components/customer/ProductsItem.vue';
 
 export default {
   name: 'ProductPage',
   components: {
+    PageBanner,
     ProductsItem,
   },
   data() {
     return {
-      productId: '',
       product: {},
-      content: [],
+      nutrientFacts: [],
       path: '',
       qty: 1,
     };
   },
   methods: {
     ...mapActions('productsModules', ['getProducts']),
-    getPageData() {
-      this.productId = this.$route.params.productId;
-      this.getProduct(this.productId);
-      this.getProducts();
-      window.scrollTo(0, 0);
-    },
     getProduct(id) {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${id}`;
       vm.$http.get(api).then((response) => {
         vm.product = response.data.product;
-        vm.content = vm.product.content.split(',');
+        vm.nutrientFacts = JSON.parse(vm.product.content);
       });
+    },
+    getPageData() {
+      this.getProduct(this.productId);
+      this.getProducts();
+      window.scrollTo(0, 0);
     },
     goToProductList(category) {
       const vm = this;
@@ -171,9 +191,27 @@ export default {
     addToCart(id, qty = 1) {
       this.$store.dispatch('cartsModules/addToCart', { id, qty });
     },
+    addToFavorite(id, item) {
+      this.$store.dispatch('productsModules/addToFavorite', { id, item });
+    },
   },
   computed: {
-    ...mapGetters('productsModules', ['randomProducts']),
+    ...mapGetters('productsModules', ['lunchBoxProducts']),
+    ...mapGetters('productsModules', ['saladProducts']),
+    ...mapGetters('productsModules', ['favoriteProducts']),
+    productId() {
+      return this.$route.params.productId;
+    },
+    recommendedProducts() {
+      const vm = this;
+      let tempProducts = {};
+      if (vm.product.category === '純素主義') {
+        tempProducts = vm.lunchBoxProducts;
+      } else {
+        tempProducts = vm.saladProducts;
+      }
+      return tempProducts;
+    },
   },
   created() {
     this.getPageData();

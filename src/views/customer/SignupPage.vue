@@ -4,10 +4,10 @@
       <div class="col-xxl-3 col-lg-4 col-sm-7 col">
         <div class="card">
           <div class="card-header text-center bg-warning">
-            <h2 class="h3 mb-0">會員登入</h2>
+            <h2 class="h3 mb-0">會員註冊</h2>
           </div>
           <div class="card-body p-5">
-            <Form @submit="signIn" v-slot="{ meta }">
+            <Form @submit="signup" v-slot="{ meta }">
               <div v-for="{ name, label, rules, type } in user" :key="name" class="mb-3">
                 <label :for="name" class="form-label w-100"
                   >{{ label }}
@@ -34,12 +34,12 @@
                 type="submit"
                 class="btn w-100 btn-primary text-white mt-3 mt-md-5"
               >
-                Submit
+                Sign Up
               </button>
             </Form>
           </div>
           <div class="card-footer text-muted text-end bg-warning">
-            <router-link to="/signup">還沒有帳號？</router-link>
+            <router-link to="/login">已經有帳號了？</router-link>
           </div>
         </div>
       </div>
@@ -49,13 +49,26 @@
 
 <script>
 export default {
-  name: 'LoginPage',
+  name: 'SignupPage',
   data() {
     return {
       user: [
         {
+          label: '姓名',
+          name: 'name',
+          as: 'input',
+          rules: 'required',
+        },
+        {
+          label: '電話',
+          name: 'tel',
+          as: 'input',
+          type: 'tel',
+          rules: 'required',
+        },
+        {
           label: '信箱',
-          name: 'username',
+          name: 'email',
           as: 'input',
           rules: 'required|email',
         },
@@ -66,27 +79,19 @@ export default {
           type: 'password',
           rules: 'required',
         },
+        {
+          label: '確認密碼',
+          name: 'confirm password',
+          as: 'input',
+          type: 'password',
+          rules: 'required|confirmed:@password',
+        },
       ],
     };
   },
   methods: {
-    signIn(values) {
-      const vm = this;
-      const api = `${process.env.VUE_APP_APIPATH}/admin/signin`;
-      vm.$http.post(api, values).then((response) => {
-        if (response.data.success) {
-          vm.setTokenCookie(response.data.token, response.data.expired);
-          vm.$router.push('/admin/products');
-        } else {
-          vm.$store.dispatch('alertModules/updateMessage', {
-            message: response.data.message,
-            status: response.data.success,
-          });
-        }
-      });
-    },
-    setTokenCookie(token, expired) {
-      document.cookie = `hexToken=${token};expires=${new Date(expired)};`;
+    signup() {
+      this.$router.push('/product_list/all');
     },
   },
 };

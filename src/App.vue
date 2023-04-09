@@ -1,6 +1,8 @@
 <template>
   <div>
-    <isLoading :active="$store.state.isLoading" />
+    <isLoading :active="$store.state.isLoading">
+      <div><img src="@/assets/images/loading.gif" alt="loading"></div>
+    </isLoading>
     <AlertMessageVue />
     <router-view />
   </div>

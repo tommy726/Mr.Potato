@@ -33,12 +33,14 @@
             <td class="text-center">
               <button
                 @click="openModal(false, false, couponItem)"
+                type="button"
                 class="btn btn-outline-info white-text-btn"
               >
                 編輯
               </button>
               <button
                 @click="openModal(false, true, couponItem)"
+                type="button"
                 class="btn btn-outline-danger ms-2"
               >
                 刪除
@@ -237,13 +239,15 @@ export default {
       }
       vm.$http[httpMethod](api, { data: vm.tempCoupon }).then((response) => {
         if (response.data.success) {
-          const { message } = response.data;
-          const status = response.data.success;
-          vm.$store.dispatch('alertModules/updateMessage', { message, status });
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: response.data.message,
+            status: response.data.success,
+          });
         } else {
-          const message = '請確認api是否正確';
-          const status = response.data.success;
-          vm.$store.dispatch('alertModules/updateMessage', { message, status });
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: '請確認api是否正確',
+            status: response.data.success,
+          });
         }
         vm.couponModal.hide();
         vm.getCoupons();
@@ -253,9 +257,10 @@ export default {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
       vm.$http.delete(api).then((response) => {
-        const { message } = response.data;
-        const status = response.data.success;
-        vm.$store.dispatch('alertModules/updateMessage', { message, status });
+        vm.$store.dispatch('alertModules/updateMessage', {
+          message: response.data.message,
+          status: response.data.success,
+        });
         vm.removeModal.hide();
         vm.getCoupons();
       });

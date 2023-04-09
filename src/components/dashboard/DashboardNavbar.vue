@@ -24,7 +24,7 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" ref="navbarCollapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <router-link to="/" tag="a" class="nav-link"
@@ -60,7 +60,17 @@
 </template>
 
 <script>
+import { Collapse } from 'bootstrap';
+
 export default {
   name: 'DashboardNavbar',
+  watch: {
+    $route() {
+      this.navbarCollapse.hide();
+    },
+  },
+  mounted() {
+    this.navbarCollapse = new Collapse(this.$refs.navbarCollapse);
+  },
 };
 </script>

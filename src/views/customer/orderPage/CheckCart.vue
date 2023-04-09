@@ -60,21 +60,21 @@
                     class="form-control form-control-sm text-center"
                     id="coupon"
                     placeholder="請輸入優惠碼"
-                    :class="{'border-success': couponData.status}"
+                    :class="{ 'border-success': couponData.status }"
                   />
                 </label>
               </th>
               <td class="text-end">
-                <button @click="addCouponCode()" class="btn btn-outline-secondary">套用</button>
+                <button @click="addCouponCode()" type="button" class="btn btn-outline-secondary">
+                  套用
+                </button>
               </td>
             </tr>
             <tr>
               <td scope="row" colspan="4" class="text-end">共有 {{ totalQuantity }} 樣商品</td>
               <td class="text-end fw-bold">總計</td>
               <td class="text-end fw-bold">
-                <del v-if="couponData.status">{{
-                  $filters.currency(cart.total)
-                }}</del>
+                <del v-if="couponData.status">{{ $filters.currency(cart.total) }}</del>
                 <span v-else>{{ $filters.currency(cart.total) }}</span>
               </td>
             </tr>
@@ -109,7 +109,9 @@ export default {
     ...mapActions('cartsModules', ['getCart']),
     updateCart(id, qty, cartId) {
       this.$store.dispatch('cartsModules/updateCart', { id, qty, cartId });
-      this.addCouponCode();
+      if (this.coupon_code !== '') {
+        this.addCouponCode();
+      }
     },
     addCouponCode() {
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/coupon`;
@@ -125,9 +127,10 @@ export default {
         } else {
           vm.coupon_code = '';
         }
-        const { message } = response.data;
-        const status = response.data.success;
-        vm.$store.dispatch('alertModules/updateMessage', { message, status });
+        vm.$store.dispatch('alertModules/updateMessage', {
+          message: response.data.message,
+          status: response.data.success,
+        });
         vm.getCart();
       });
     },
