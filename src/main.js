@@ -1,4 +1,3 @@
-import 'bootstrap';
 import '@/assets/stylesheet/main.scss';
 import '@fortawesome/fontawesome-free/css/all.css';
 import Loading from 'vue3-loading-overlay';

@@ -2,7 +2,7 @@
   <div>
     <div class="d-flex justify-content-between">
       <h2><i class="fa-solid fa-box-open me-1"></i>產品列表</h2>
-      <button @click="openModal(true, false)" type="button" class="btn btn-info text-white">
+      <button @click="openModal(true)" type="button" class="btn btn-info text-white">
         新增商品
       </button>
     </div>
@@ -32,19 +32,13 @@
             </td>
             <td class="text-center">
               <button
-                @click="openModal(false, false, productItem)"
+                @click="openModal(false, productItem)"
                 type="button"
                 class="btn btn-outline-info white-text-btn"
               >
                 編輯
               </button>
-              <button
-                @click="openModal(false, true, productItem)"
-                type="button"
-                class="btn btn-outline-danger ms-2"
-              >
-                刪除
-              </button>
+              <RemoveModal :data="productItem" @remove="removeProduct(productItem.id)" />
             </td>
           </tr>
         </tbody>
@@ -220,53 +214,19 @@
         </div>
       </div>
     </div>
-
-    <!-- remove modal -->
-    <div
-      class="modal fade"
-      id="removeModal"
-      tabindex="-1"
-      aria-labelledby="removeModalLabel"
-      aria-hidden="true"
-      ref="removeModal"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header bg-danger text-white">
-            <h1 class="modal-title fs-5" id="removeModalLabel">刪除產品</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body py-6">
-            確定要刪除 <strong class="text-primary">{{ tempProduct.title }}</strong
-            >？
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-              取消
-            </button>
-            <button @click="removeProduct" type="button" class="btn btn-outline-danger">
-              確定刪除
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 import { Modal } from 'bootstrap';
+import RemoveModal from '@/components/dashboard/RemoveModal.vue';
 import DashboardPagination from '@/components/dashboard/DashboardPagination.vue';
 
 export default {
   name: 'AdminProducts',
   components: {
     DashboardPagination,
+    RemoveModal,
   },
   data() {
     return {
@@ -274,7 +234,6 @@ export default {
       tempProduct: {},
       pagination: {},
       newProductItem: false,
-      removeProductItem: false,
       fileUploading: false,
     };
   },
@@ -336,7 +295,6 @@ export default {
             message: response.data.message,
             status: response.data.success,
           });
-          vm.removeModal.hide();
           vm.getProducts();
         })
         .catch(() => {
@@ -384,19 +342,16 @@ export default {
           });
         });
     },
-    openModal(newProductItem, removeProductItem, productItem) {
+    openModal(newProductItem, productItem) {
       const vm = this;
       if (newProductItem) {
         vm.tempProduct = {};
         vm.newProductItem = true;
         vm.productModal.show();
-      } else if (!newProductItem && !removeProductItem) {
+      } else {
         vm.tempProduct = { ...productItem };
         vm.newProductItem = false;
         vm.productModal.show();
-      } else {
-        vm.tempProduct = { ...productItem };
-        vm.removeModal.show();
       }
     },
   },
@@ -406,7 +361,6 @@ export default {
   mounted() {
     const vm = this;
     vm.productModal = new Modal(vm.$refs.productModal);
-    vm.removeModal = new Modal(vm.$refs.removeModal);
   },
 };
 </script>

@@ -32,19 +32,13 @@
             </td>
             <td class="text-center">
               <button
-                @click="openModal(false, false, couponItem)"
+                @click="openModal(false, couponItem)"
                 type="button"
                 class="btn btn-outline-info white-text-btn"
               >
                 編輯
               </button>
-              <button
-                @click="openModal(false, true, couponItem)"
-                type="button"
-                class="btn btn-outline-danger ms-2"
-              >
-                刪除
-              </button>
+              <RemoveModal :data="couponItem" @remove="removeCoupon(couponItem.id)" />
             </td>
           </tr>
         </tbody>
@@ -146,53 +140,19 @@
         </div>
       </div>
     </div>
-
-    <!-- remove modal -->
-    <div
-      class="modal fade"
-      id="removeModal"
-      tabindex="-1"
-      aria-labelledby="removeModalLabel"
-      aria-hidden="true"
-      ref="removeModal"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header bg-danger text-white">
-            <h1 class="modal-title fs-5" id="removeModalLabel">刪除優惠券</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body py-6">
-            確定要刪除 <strong class="text-primary">{{ tempCoupon.title }}</strong
-            >？
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-              取消
-            </button>
-            <button @click="removeCoupon" type="button" class="btn btn-outline-danger">
-              確定刪除
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 import { Modal } from 'bootstrap';
+import RemoveModal from '@/components/dashboard/RemoveModal.vue';
 import DashboardPagination from '@/components/dashboard/DashboardPagination.vue';
 
 export default {
   name: 'AdminCoupons',
   components: {
     DashboardPagination,
+    RemoveModal,
   },
   data() {
     return {
@@ -207,7 +167,6 @@ export default {
       due_date: '',
       pagination: {},
       newCouponItem: false,
-      removeCouponItem: false,
     };
   },
   watch: {
@@ -222,7 +181,8 @@ export default {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupons?page=${page}`;
       vm.$store.dispatch('updateLoading', true);
-      vm.$http.get(api)
+      vm.$http
+        .get(api)
         .then((response) => {
           vm.coupons = response.data.coupons;
           vm.pagination = response.data.pagination;
@@ -267,16 +227,15 @@ export default {
           });
         });
     },
-    removeCoupon() {
+    removeCoupon(id) {
       const vm = this;
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${id}`;
       vm.$http.delete(api)
         .then((response) => {
           vm.$store.dispatch('alertModules/updateMessage', {
             message: response.data.message,
             status: response.data.success,
           });
-          vm.removeModal.hide();
           vm.getCoupons();
         })
         .catch(() => {
@@ -286,7 +245,7 @@ export default {
           });
         });
     },
-    openModal(newCouponItem, removeCouponItem, couponItem) {
+    openModal(newCouponItem, couponItem) {
       const vm = this;
       if (newCouponItem) {
         vm.tempCoupon = {};
@@ -294,15 +253,12 @@ export default {
         vm.due_date = `${newCouponDate}`;
         vm.newCouponItem = true;
         vm.couponModal.show();
-      } else if (!newCouponItem && !removeCouponItem) {
+      } else {
         vm.tempCoupon = { ...couponItem };
         const [tempCouponDate] = new Date(vm.tempCoupon.due_date * 1000).toISOString().split('T');
         vm.due_date = `${tempCouponDate}`;
         vm.newCouponItem = false;
         vm.couponModal.show();
-      } else {
-        vm.tempCoupon = { ...couponItem };
-        vm.removeModal.show();
       }
     },
   },
@@ -312,7 +268,6 @@ export default {
   mounted() {
     const vm = this;
     vm.couponModal = new Modal(vm.$refs.couponModal);
-    vm.removeModal = new Modal(vm.$refs.removeModal);
   },
 };
 </script>
