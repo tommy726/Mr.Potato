@@ -61,7 +61,7 @@
               <div class="input-group">
                 <input
                   v-model="email"
-                  type="text"
+                  type="email"
                   class="form-control"
                   placeholder="請輸入 Email"
                   aria-label="subscribeEmail"
