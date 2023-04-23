@@ -16,9 +16,9 @@
                   />
                   Mr.Potato
                 </router-link>
-                <a href="https://goo.gl/maps/ZpDuTXDgAZu9doX88" target="_blank"
-                  >台北市信義區市府路45號</a
-                >
+                <a href="https://goo.gl/maps/ZpDuTXDgAZu9doX88" target="_blank">
+                  台北市信義區市府路45號
+                </a>
                 <div>
                   <a href="tel:+886 987654321" class="info-border">0987654321</a>
                   <a href="mailto:MrPotato@google.com">MrPotato@google.com</a>
@@ -41,19 +41,19 @@
             <div class="col-3">
               <ul class="social-link p-0 fs-5">
                 <li>
-                  <a href="https://zh-tw.facebook.com/" target="_blank" aria-label="Go to FB"
-                    ><i class="fa-brands fa-facebook"></i
-                  ></a>
+                  <a href="https://zh-tw.facebook.com/" target="_blank" aria-label="Go to FB">
+                    <i class="fa-brands fa-facebook"></i>
+                  </a>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/" target="_blank" aria-label="Go to IG"
-                    ><i class="fa-brands fa-instagram"></i
-                  ></a>
+                  <a href="https://www.instagram.com/" target="_blank" aria-label="Go to IG">
+                    <i class="fa-brands fa-instagram"></i>
+                  </a>
                 </li>
                 <li>
-                  <a href="https://line.me/zh-hant/" target="_blank" aria-label="Go to Line"
-                    ><i class="fa-brands fa-line"></i
-                  ></a>
+                  <a href="https://line.me/zh-hant/" target="_blank" aria-label="Go to Line">
+                    <i class="fa-brands fa-line"></i>
+                  </a>
                 </li>
               </ul>
             </div>
