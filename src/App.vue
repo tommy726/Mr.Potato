@@ -1,7 +1,7 @@
 <template>
   <div>
     <isLoading :active="$store.state.isLoading">
-      <div><img src="@/assets/images/loading.gif" alt="loading"></div>
+      <div><img src="@/assets/images/loading.gif" alt="loading" /></div>
     </isLoading>
     <AlertMessageVue />
     <router-view />
@@ -11,7 +11,6 @@
 <script>
 import { mapGetters } from 'vuex';
 import AlertMessageVue from './components/shared/AlertMessage.vue';
-import router from './router';
 
 export default {
   name: 'App',
@@ -24,13 +23,6 @@ export default {
   created() {
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
     this.$http.defaults.headers.common.Authorization = `${token}`;
-  },
-  watch: {
-    $route(to) {
-      if (to.path === '/admin') {
-        router.push('/admin/products');
-      }
-    },
   },
 };
 </script>

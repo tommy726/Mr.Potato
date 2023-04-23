@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- banner -->
-    <div class="home-banner position-relative">
+    <div class="home-banner position-relative px-3">
       <div class="background-image"></div>
       <div class="banner-text text-center text-black">
         <h2 class="h1 mb-4">讓沙發馬鈴薯的您<br />躺著也能吃到美味健康的餐盒</h2>
@@ -33,7 +33,8 @@
               class="btn btn-primary text-white"
               data-aos="flip-up"
               data-aos-duration="800"
-              >現在就開始改變
+              >
+              現在就開始改變
             </router-link>
           </div>
           <div class="col-lg-4 d-lg-block d-none figure">
@@ -66,7 +67,7 @@
           </a>
           ，享全品項5折優惠
         </p>
-        <span class="h4 mt-3">立即點選下方圖示挑選美食</span>
+        <ins class="h4 mt-3">立即點選下方圖示挑選美食</ins>
       </div>
       <ul
         class="row justify-content-center ps-0 m-0"
@@ -74,41 +75,35 @@
         data-aos-delay="300"
         data-aos-duration="800"
       >
-        <li
-          class="col-4 bg-cover"
-          :style="{ backgroundImage: `url(${require('@/assets/images/salad.jpg')})` }"
-        >
+        <li class="col-4 bg-cover vegetable">
           <router-link to="product_list/vegetarian">純素主義</router-link>
         </li>
-        <li
-          class="col-4 bg-cover"
-          :style="{ backgroundImage: `url(${require('@/assets/images/steak.jpg')})` }"
-        >
+        <li class="col-4 bg-cover meat">
           <router-link to="product_list/meat">原肉至上</router-link>
         </li>
-        <li
-          class="col-4 bg-cover"
-          :style="{ backgroundImage: `url(${require('@/assets/images/salmon.jpg')})` }"
-        >
+        <li class="col-4 bg-cover seafood">
           <router-link to="product_list/seafood">就愛海味</router-link>
         </li>
       </ul>
     </div>
 
     <!-- publicity -->
-    <section class="container-fluid publicity bg-white text-center my-4 my-lg-8">
-      <h4 class="display-6 my-3 my-md-5 text-primary">Why Mr.Potato</h4>
-      <p class="mb-6">
-        一個健康的身體，需要好的營養和養分。 <br />Mr. Potato
-        提供的健康餐盒，能讓您不用擔心吃不到健康食物的困擾。
-      </p>
-      <h5 class="h2 mt-3 mt-lg-8 mb-5 text-success">綠色健康</h5>
-      <p>
-        Mr.Potato 是一個綠色健康的品牌。
-        <br />我們重視食品的健康與環境的保護，所有產品都是在綠色環保原則下製作的。
-      </p>
-      <h6 class="h2 mt-3 mt-lg-8 mb-5 text-primary">品味，源自於對細節的追求</h6>
-      <p>每一道菜色都經過嚴格挑選，烹調出精湛的口味和質感，讓您享受到高品質的健康餐食！</p>
+    <section class="publicity bg-white text-center my-4 my-lg-8">
+      <div class="container">
+        <h4 class="display-6 my-3 my-md-5 text-primary">Why Mr.Potato</h4>
+        <p class="mb-6">
+          一個健康的身體，需要好的營養和養分。
+          <br />Mr. Potato
+          提供的健康餐盒，能讓您不用擔心吃不到健康食物的困擾。
+        </p>
+        <h5 class="h2 mt-3 mt-lg-8 mb-5 text-success">綠色健康</h5>
+        <p>
+          Mr.Potato 是一個綠色健康的品牌。
+          <br />我們重視食品的健康與環境的保護，所有產品都是在綠色環保原則下製作的。
+        </p>
+        <h6 class="h2 mt-3 mt-lg-8 mb-5 text-primary">品味，源自於對細節的追求</h6>
+        <p>每一道菜色都經過嚴格挑選，烹調出精湛的口味和質感，讓您享受到高品質的健康餐食！</p>
+      </div>
     </section>
 
     <!-- product items -->
@@ -146,8 +141,9 @@ export default {
   methods: {
     ...mapActions('productsModules', ['getProducts']),
     copyCouponCode(text) {
+      const vm = this;
       navigator.clipboard.writeText(text).then(() => {
-        this.$store.dispatch('alertModules/updateMessage', {
+        vm.$store.dispatch('alertModules/updateMessage', {
           message: '已複製優惠碼',
           status: true,
         });

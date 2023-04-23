@@ -56,6 +56,18 @@ $menu-border-radius: 50%;
   left: 0;
 }
 
+.vegetable {
+  background-image: url('/src/assets/images/salad.jpg');
+}
+
+.meat {
+  background-image: url('/src/assets/images/steak.jpg');
+}
+
+.seafood {
+  background-image: url('/src/assets/images/salmon.jpg');
+}
+
 @include media-breakpoint-up(md) {
   .menu-list {
     li {

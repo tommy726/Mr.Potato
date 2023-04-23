@@ -154,6 +154,7 @@
         <router-link to="/check_cart" class="btn btn-outline-secondary">返回購物車</router-link>
         <button
           :disabled="!meta.valid"
+          :class="{ 'disabled-btn': !meta.valid }"
           type="submit"
           class="btn btn-outline-primary white-text-btn ms-2"
         >
@@ -235,17 +236,24 @@ export default {
         },
         message: values.message,
       };
-      vm.$http.post(api, { data: userInfo }).then((response) => {
-        vm.$store.dispatch('alertModules/updateMessage', {
-          message: response.data.message,
-          status: response.data.success,
+      vm.$http.post(api, { data: userInfo })
+        .then((response) => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: response.data.message,
+            status: response.data.success,
+          });
+          if (response.data.success) {
+            const path = response.data.orderId;
+            vm.getCart();
+            vm.$router.push(`/checkouts/${path}`);
+          }
+        })
+        .catch(() => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
+          });
         });
-        if (response.data.success) {
-          const path = response.data.orderId;
-          vm.getCart();
-          vm.$router.push(`/checkouts/${path}`);
-        }
-      });
     },
   },
   computed: {

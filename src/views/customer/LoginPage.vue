@@ -73,17 +73,24 @@ export default {
     signIn(values) {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/admin/signin`;
-      vm.$http.post(api, values).then((response) => {
-        if (response.data.success) {
-          vm.setTokenCookie(response.data.token, response.data.expired);
-          vm.$router.push('/admin/products');
-        } else {
+      vm.$http.post(api, values)
+        .then((response) => {
+          if (response.data.success) {
+            vm.setTokenCookie(response.data.token, response.data.expired);
+            vm.$router.push('/admin/products');
+          } else {
+            vm.$store.dispatch('alertModules/updateMessage', {
+              message: response.data.message,
+              status: response.data.success,
+            });
+          }
+        })
+        .catch(() => {
           vm.$store.dispatch('alertModules/updateMessage', {
-            message: response.data.message,
-            status: response.data.success,
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
           });
-        }
-      });
+        });
     },
     setTokenCookie(token, expired) {
       document.cookie = `hexToken=${token};expires=${new Date(expired)};`;

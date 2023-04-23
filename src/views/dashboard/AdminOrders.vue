@@ -179,7 +179,6 @@ export default {
       },
       pagination: {},
       isPaid: 'all',
-      filterData: {},
     };
   },
   methods: {
@@ -187,44 +186,61 @@ export default {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/orders?page=${page}`;
       vm.$store.dispatch('updateLoading', true);
-      vm.$http.get(api).then((response) => {
-        vm.orderData = response.data;
-        vm.pagination = response.data.pagination;
-        if (vm.isPaid === 'all') {
-          vm.filterData = vm.orderData.orders;
-        } else if (vm.isPaid === 'true') {
-          vm.filterData = vm.orderData.orders.filter((item) => item.is_paid === true);
-        } else if (vm.isPaid === 'false') {
-          vm.filterData = vm.orderData.orders.filter((item) => item.is_paid === false);
-        }
-        vm.$store.dispatch('updateLoading', false);
-      });
+      vm.$http.get(api)
+        .then((response) => {
+          vm.orderData = response.data;
+          vm.pagination = response.data.pagination;
+          vm.$store.dispatch('updateLoading', false);
+        })
+        .catch(() => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
+          });
+        });
     },
     openModal(id) {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order/${id}`;
       vm.infoModal.show();
       vm.$store.dispatch('updateLoading', true);
-      vm.$http.get(api).then((response) => {
-        if (response.data.order) {
-          vm.userInfo = response.data.order;
-        } else {
-          vm.infoModal.hide();
-        }
-      });
+      vm.$http.get(api)
+        .then((response) => {
+          if (response.data.order) {
+            vm.userInfo = response.data.order;
+          } else {
+            vm.infoModal.hide();
+          }
+        })
+        .catch(() => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
+          });
+        });
       vm.$store.dispatch('updateLoading', false);
     },
   },
   created() {
     this.getOrder();
   },
-  watch: {
-    isPaid() {
-      this.getOrder();
+  computed: {
+    filterData() {
+      const vm = this;
+      let tempData = {};
+      if (vm.isPaid === 'all') {
+        tempData = vm.orderData.orders;
+      } else if (vm.isPaid === 'true') {
+        tempData = vm.orderData.orders.filter((item) => item.is_paid === true);
+      } else if (vm.isPaid === 'false') {
+        tempData = vm.orderData.orders.filter((item) => item.is_paid === false);
+      }
+      return tempData;
     },
   },
   mounted() {
-    this.infoModal = new Modal(this.$refs.infoModal);
+    const vm = this;
+    vm.infoModal = new Modal(vm.$refs.infoModal);
   },
 };
 </script>

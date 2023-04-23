@@ -1,5 +1,5 @@
 <template>
-  <div class="page-banner">
+  <div class="page-banner px-3">
     <div class="background-image"></div>
     <div class="banner-text text-center text-black">
       <h3 class="h1 mb-4">歡慶開幕<br />邀您一起吃得更健康</h3>
@@ -26,8 +26,9 @@ export default {
   },
   methods: {
     copyCouponCode(text) {
+      const vm = this;
       navigator.clipboard.writeText(text).then(() => {
-        this.$store.dispatch('alertModules/updateMessage', {
+        vm.$store.dispatch('alertModules/updateMessage', {
           message: '已複製優惠碼',
           status: true,
         });

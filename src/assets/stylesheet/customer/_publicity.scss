@@ -11,7 +11,7 @@ $offset: 10vw;
   h4::before,
   h4::after {
     position: absolute;
-    content: "";
+    content: '';
     background-color: $potatoText;
     width: 7.5%;
     height: 2px;
@@ -45,16 +45,6 @@ $offset: 10vw;
 
     h4::after {
       right: $offset * 2;
-    }
-  }
-
-  @include media-breakpoint-up(xxl) {
-    h4::before {
-      left: $offset * 3;
-    }
-
-    h4::after {
-      right: $offset * 3;
     }
   }
 }

@@ -8,9 +8,9 @@
           <ProductsItem :productData="filterFavorite" />
           <div v-if="!filterFavorite.length" class="text-center my-6">
             <h3 class="mb-5">目前沒有收藏中的商品!</h3>
-            <router-link to="/product_list/all" class="btn btn-primary text-white"
-                >點我去逛逛
-              </router-link>
+            <router-link to="/product_list/all" class="btn btn-primary text-white">
+              點我去逛逛
+            </router-link>
           </div>
         </div>
       </div>

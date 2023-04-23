@@ -283,11 +283,18 @@ export default {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products?page=${page}`;
       vm.$store.dispatch('updateLoading', true);
-      vm.$http.get(api).then((response) => {
-        vm.products = response.data.products;
-        vm.pagination = response.data.pagination;
-        vm.$store.dispatch('updateLoading', false);
-      });
+      vm.$http.get(api)
+        .then((response) => {
+          vm.products = response.data.products;
+          vm.pagination = response.data.pagination;
+          vm.$store.dispatch('updateLoading', false);
+        })
+        .catch(() => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
+          });
+        });
     },
     updateProduct() {
       const vm = this;
@@ -297,33 +304,47 @@ export default {
         api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
         httpMethod = 'put';
       }
-      vm.$http[httpMethod](api, { data: vm.tempProduct }).then((response) => {
-        if (response.data.success) {
+      vm.$http[httpMethod](api, { data: vm.tempProduct })
+        .then((response) => {
+          if (response.data.success) {
+            vm.$store.dispatch('alertModules/updateMessage', {
+              message: response.data.message,
+              status: response.data.success,
+            });
+          } else {
+            vm.$store.dispatch('alertModules/updateMessage', {
+              message: response.data.message,
+              status: response.data.success,
+            });
+          }
+          vm.productModal.hide();
+          vm.getProducts();
+        })
+        .catch(() => {
           vm.$store.dispatch('alertModules/updateMessage', {
-            message: response.data.message,
-            status: response.data.success,
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
           });
-        } else {
-          vm.$store.dispatch('alertModules/updateMessage', {
-            message: response.data.message,
-            status: response.data.success,
-          });
-        }
-        vm.productModal.hide();
-        vm.getProducts();
-      });
+        });
     },
     removeProduct() {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
-      vm.$http.delete(api).then((response) => {
-        vm.$store.dispatch('alertModules/updateMessage', {
-          message: response.data.message,
-          status: response.data.success,
+      vm.$http.delete(api)
+        .then((response) => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: response.data.message,
+            status: response.data.success,
+          });
+          vm.removeModal.hide();
+          vm.getProducts();
+        })
+        .catch(() => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
+          });
         });
-        vm.removeModal.hide();
-        vm.getProducts();
-      });
     },
     uploadFile() {
       const vm = this;
@@ -355,20 +376,27 @@ export default {
             });
             vm.fileUploading = false;
           }
+        })
+        .catch(() => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
+          });
         });
     },
     openModal(newProductItem, removeProductItem, productItem) {
+      const vm = this;
       if (newProductItem) {
-        this.tempProduct = {};
-        this.newProductItem = true;
-        this.productModal.show();
+        vm.tempProduct = {};
+        vm.newProductItem = true;
+        vm.productModal.show();
       } else if (!newProductItem && !removeProductItem) {
-        this.tempProduct = { ...productItem };
-        this.newProductItem = false;
-        this.productModal.show();
+        vm.tempProduct = { ...productItem };
+        vm.newProductItem = false;
+        vm.productModal.show();
       } else {
-        this.tempProduct = { ...productItem };
-        this.removeModal.show();
+        vm.tempProduct = { ...productItem };
+        vm.removeModal.show();
       }
     },
   },
@@ -376,8 +404,9 @@ export default {
     this.getProducts();
   },
   mounted() {
-    this.productModal = new Modal(this.$refs.productModal);
-    this.removeModal = new Modal(this.$refs.removeModal);
+    const vm = this;
+    vm.productModal = new Modal(vm.$refs.productModal);
+    vm.removeModal = new Modal(vm.$refs.removeModal);
   },
 };
 </script>

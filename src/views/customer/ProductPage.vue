@@ -18,13 +18,6 @@
             </ol>
           </nav>
           <img :src="product.imageUrl" :alt="product.title" class="img-thumbnail bigImage" />
-          <div class="mt-4 bg-white p-3 notes d-md-block d-none">
-            <h5 class="text-danger">*購買須知</h5>
-            <small
-              >Mr.Potato所有產品皆為當日新鮮現做，最佳賞味期為一日，如有需要隔日食用，請務必將產品放入冷藏保鮮。
-              <br />產品運送中可能會有包裝歪斜、保溫的問題，購買表示已同意以上風險。
-            </small>
-          </div>
         </div>
         <div class="col-md-4">
           <nav aria-label="current page" class="d-none d-md-block">
@@ -104,14 +97,106 @@
                 </tr>
               </tbody>
             </table>
-            <span class="text-danger">*營養成份未經過專業測量，僅供參考。</span>
+            <span class="text-danger">*營養成份僅供參考。</span>
           </small>
-          <div class="mt-4 bg-white p-3 notes d-block d-md-none">
-            <h5 class="text-danger">*購買須知</h5>
-            <small
-              >Mr.Potato所有產品皆為當日新鮮現做，最佳賞味期為一日，如有需要隔日食用，請務必將產品放入冷藏保鮮。
-              <br />產品運送中可能會有包裝歪斜、保溫的問題，購買表示已同意以上風險。
-            </small>
+        </div>
+        <div class="col-md-8 my-md-8 my-6">
+          <div class="accordion" id="notesAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="false"
+                  aria-controls="collapseOne"
+                >
+                  # 商品買錯了，可以退換貨嗎?
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingOne"
+                data-bs-parent="#notesAccordionExample"
+              >
+                <div class="accordion-body">
+                  <p>
+                    如果您在購買當下、外送核對餐點時、用餐時發現商品瑕疵貨品項錯誤，請立即連繫我們，將為您提供退換貨。
+                  </p>
+                  <span class="text-danger">
+                    商品運送中可能會有包裝歪斜、保溫的問題，訂餐表示已同意以上風險，如有相關的問題發生，將不提供退換貨。
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  # 商品隔餐保存方法
+                </button>
+              </h2>
+              <div
+                id="collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingTwo"
+                data-bs-parent="#notesAccordionExample"
+              >
+                <div class="accordion-body">
+                  <p>
+                    Mr.Potato所有產品皆為當下新鮮現做，如有需要隔餐食用，請務必將產品放入冷藏(冷凍)保存，並在需要用餐時充分加熱。
+                  </p>
+                  <ul>
+                    <li><strong>冷藏保存</strong>：最多保存兩天，盡量盡早食用完畢。</li>
+                    <li>
+                      <strong>冷凍保存</strong>：可以保存較長時間，基於衛生安全，建議不要超過一周。
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  # 隔夜餐盒加熱技巧
+                </button>
+              </h2>
+              <div
+                id="collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingThree"
+                data-bs-parent="#notesAccordionExample"
+              >
+                <div class="accordion-body">
+                  <p>Mr.Potato 提供的餐盒皆為熟食，隔餐食用僅需要加熱，以下提供參考方法：</p>
+                  <ul>
+                    <li>
+                      <strong>微波</strong
+                      >：將產品退冰並移到盤中，700W微波3分鐘，加熱時間可能因微波爐不同而異。
+                    </li>
+                    <li>
+                      <strong>電鍋</strong>：將產品移到盤中，放入1/2杯水（150ml），待電鍋跳起。
+                    </li>
+                    <li><strong>烤箱</strong>：將產品移到盤中，180度加熱6分鐘或到達食用溫度。</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -125,10 +210,10 @@
           data-aos-duration="800"
           data-aos-anchor-placement="top-center"
         >
-          <h3 class="text-center text-primary mb-6">
+          <h4 class="text-center text-primary mb-6 h3">
             <span v-if="product.category === '純素主義'">搭配主食，營養更均衡</span>
             <span v-else>來點沙拉，補充膳食纖維</span>
-          </h3>
+          </h4>
           <ProductsItem :productData="recommendedProducts" />
         </div>
       </div>
@@ -160,14 +245,22 @@ export default {
     getProduct(id) {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${id}`;
-      vm.$http.get(api).then((response) => {
-        vm.product = response.data.product;
-        vm.nutrientFacts = JSON.parse(vm.product.content);
-      });
+      vm.$http.get(api)
+        .then((response) => {
+          vm.product = response.data.product;
+          vm.nutrientFacts = JSON.parse(vm.product.content);
+        })
+        .catch(() => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
+          });
+        });
     },
     getPageData() {
-      this.getProduct(this.productId);
-      this.getProducts();
+      const vm = this;
+      vm.getProduct(vm.productId);
+      vm.getProducts();
       window.scrollTo(0, 0);
     },
     goToProductList(category) {
@@ -186,7 +279,7 @@ export default {
           vm.path = 'all';
           break;
       }
-      this.$router.push({ path: `/product_list/${vm.path}` });
+      vm.$router.push({ path: `/product_list/${vm.path}` });
     },
     addToCart(id, qty = 1) {
       this.$store.dispatch('cartsModules/addToCart', { id, qty });

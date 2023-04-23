@@ -9,7 +9,7 @@
                 <router-link to="/" tag="a" class="h3">
                   <img
                     src="@/assets/images/logo.png"
-                    alt=""
+                    alt="logo"
                     width="28"
                     height="28"
                     class="d-inline-block align-text-top"

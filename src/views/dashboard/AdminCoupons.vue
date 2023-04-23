@@ -139,7 +139,7 @@
             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
               取消
             </button>
-            <button @click="updateCoupon()" type="button" class="btn btn-info text-white">
+            <button @click="updateCoupon" type="button" class="btn btn-info text-white">
               確定
             </button>
           </div>
@@ -222,48 +222,69 @@ export default {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupons?page=${page}`;
       vm.$store.dispatch('updateLoading', true);
-      vm.$http.get(api).then((response) => {
-        vm.coupons = response.data.coupons;
-        vm.pagination = response.data.pagination;
-        vm.isLoading = false;
-        vm.$store.dispatch('updateLoading', false);
-      });
+      vm.$http.get(api)
+        .then((response) => {
+          vm.coupons = response.data.coupons;
+          vm.pagination = response.data.pagination;
+          vm.isLoading = false;
+          vm.$store.dispatch('updateLoading', false);
+        })
+        .catch(() => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
+          });
+        });
     },
     updateCoupon() {
       const vm = this;
       let api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon`;
       let httpMethod = 'post';
-      if (!this.newCouponItem) {
+      if (!vm.newCouponItem) {
         api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
         httpMethod = 'put';
       }
-      vm.$http[httpMethod](api, { data: vm.tempCoupon }).then((response) => {
-        if (response.data.success) {
+      vm.$http[httpMethod](api, { data: vm.tempCoupon })
+        .then((response) => {
+          if (response.data.success) {
+            vm.$store.dispatch('alertModules/updateMessage', {
+              message: response.data.message,
+              status: response.data.success,
+            });
+          } else {
+            vm.$store.dispatch('alertModules/updateMessage', {
+              message: '請確認api是否正確',
+              status: response.data.success,
+            });
+          }
+          vm.couponModal.hide();
+          vm.getCoupons();
+        })
+        .catch(() => {
           vm.$store.dispatch('alertModules/updateMessage', {
-            message: response.data.message,
-            status: response.data.success,
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
           });
-        } else {
-          vm.$store.dispatch('alertModules/updateMessage', {
-            message: '請確認api是否正確',
-            status: response.data.success,
-          });
-        }
-        vm.couponModal.hide();
-        vm.getCoupons();
-      });
+        });
     },
     removeCoupon() {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
-      vm.$http.delete(api).then((response) => {
-        vm.$store.dispatch('alertModules/updateMessage', {
-          message: response.data.message,
-          status: response.data.success,
+      vm.$http.delete(api)
+        .then((response) => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: response.data.message,
+            status: response.data.success,
+          });
+          vm.removeModal.hide();
+          vm.getCoupons();
+        })
+        .catch(() => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
+          });
         });
-        vm.removeModal.hide();
-        vm.getCoupons();
-      });
     },
     openModal(newCouponItem, removeCouponItem, couponItem) {
       const vm = this;
@@ -289,8 +310,9 @@ export default {
     this.getCoupons();
   },
   mounted() {
-    this.couponModal = new Modal(this.$refs.couponModal);
-    this.removeModal = new Modal(this.$refs.removeModal);
+    const vm = this;
+    vm.couponModal = new Modal(vm.$refs.couponModal);
+    vm.removeModal = new Modal(vm.$refs.removeModal);
   },
 };
 </script>

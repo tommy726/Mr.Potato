@@ -2,7 +2,7 @@
   <div class="message-alert">
     <div
       class="alert alert-dismissible"
-      :class="'alert-' + item.apiStatus"
+      :class="`alert-${item.apiStatus}`"
       v-for="(item, index) in messages"
       :key="index"
     >

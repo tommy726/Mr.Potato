@@ -99,29 +99,43 @@ export default {
   methods: {
     getOrders() {
       const vm = this;
-      const id = this.$route.params.orderId;
+      const id = vm.$route.params.orderId;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order/${id}`;
       vm.$store.dispatch('updateLoading', true);
-      vm.$http.get(api).then((response) => {
-        if (response.data.order) {
-          vm.order = response.data.order;
-        } else {
-          vm.$router.push('/');
-        }
-      });
+      vm.$http.get(api)
+        .then((response) => {
+          if (response.data.order) {
+            vm.order = response.data.order;
+          } else {
+            vm.$router.push('/');
+          }
+        })
+        .catch(() => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
+          });
+        });
       vm.$store.dispatch('updateLoading', false);
     },
     checkouts() {
       const vm = this;
-      const id = this.$route.params.orderId;
+      const id = vm.$route.params.orderId;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/pay/${id}`;
-      vm.$http.post(api).then((response) => {
-        if (response.data.success) {
-          vm.$router.push('/order_complete');
-        } else {
-          vm.$router.push('/');
-        }
-      });
+      vm.$http.post(api)
+        .then((response) => {
+          if (response.data.success) {
+            vm.$router.push('/order_complete');
+          } else {
+            vm.$router.push('/');
+          }
+        })
+        .catch(() => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
+          });
+        });
     },
   },
   created() {

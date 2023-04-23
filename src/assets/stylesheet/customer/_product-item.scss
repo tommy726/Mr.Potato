@@ -39,8 +39,16 @@
     justify-content: space-between;
     background-color: $white;
 
-    h5 {
+    .card-title {
       font-weight: bold;
+    }
+
+    .card-title a {
+      color: $potatoText;
+    }
+
+    .card-title a:hover {
+      color: $primary;
     }
 
     span {

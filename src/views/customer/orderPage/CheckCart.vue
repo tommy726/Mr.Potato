@@ -65,7 +65,7 @@
                 </label>
               </th>
               <td class="text-end">
-                <button @click="addCouponCode()" type="button" class="btn btn-outline-secondary">
+                <button @click="addCouponCode" type="button" class="btn btn-outline-secondary">
                   套用
                 </button>
               </td>
@@ -103,36 +103,44 @@ export default {
     };
   },
   methods: {
+    ...mapActions('cartsModules', ['getCart']),
     removeCart(id) {
       this.$store.dispatch('cartsModules/removeCart', id);
     },
-    ...mapActions('cartsModules', ['getCart']),
     updateCart(id, qty, cartId) {
-      this.$store.dispatch('cartsModules/updateCart', { id, qty, cartId });
-      if (this.coupon_code !== '') {
-        this.addCouponCode();
+      const vm = this;
+      vm.$store.dispatch('cartsModules/updateCart', { id, qty, cartId });
+      if (vm.coupon_code !== '') {
+        setTimeout(() => vm.addCouponCode(), 100);
       }
     },
     addCouponCode() {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/coupon`;
       const vm = this;
+      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/coupon`;
       const coupon = {
         code: vm.coupon_code,
       };
-      vm.$http.post(api, { data: coupon }).then((response) => {
-        if (response.data.success) {
-          const status = response.data.success;
-          const code = response.data.message.split(':')[1];
-          vm.$store.dispatch('cartsModules/changeCouponStatus', { status, code });
-        } else {
-          vm.coupon_code = '';
-        }
-        vm.$store.dispatch('alertModules/updateMessage', {
-          message: response.data.message,
-          status: response.data.success,
+      vm.$http.post(api, { data: coupon })
+        .then((response) => {
+          if (response.data.success) {
+            const status = response.data.success;
+            const code = response.data.message.split(':')[1];
+            vm.$store.dispatch('cartsModules/changeCouponStatus', { status, code });
+          } else {
+            vm.coupon_code = '';
+          }
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: response.data.message,
+            status: response.data.success,
+          });
+          vm.getCart();
+        })
+        .catch(() => {
+          vm.$store.dispatch('alertModules/updateMessage', {
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
+          });
         });
-        vm.getCart();
-      });
     },
   },
   computed: {

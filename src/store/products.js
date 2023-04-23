@@ -12,13 +12,20 @@ export default {
     getProducts(context) {
       context.dispatch('updateLoading', true, { root: true });
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products/all`;
-      axios.get(api).then((response) => {
-        const filterProducts = response.data.products.filter((item) => item.is_enabled === 1);
-        context.commit('FILTER_PRODUCTS', filterProducts);
-        context.dispatch('getLunchBoxProducts');
-        context.dispatch('getSaladProducts');
-        context.dispatch('updateLoading', false, { root: true });
-      });
+      axios.get(api)
+        .then((response) => {
+          const filterProducts = response.data.products.filter((item) => item.is_enabled === 1);
+          context.commit('FILTER_PRODUCTS', filterProducts);
+          context.dispatch('getLunchBoxProducts');
+          context.dispatch('getSaladProducts');
+          context.dispatch('updateLoading', false, { root: true });
+        })
+        .catch(() => {
+          context.dispatch('alertModules/updateMessage', {
+            message: '資料取得失敗，請確認api是否正確',
+            status: false,
+          });
+        });
     },
     getLunchBoxProducts({ state, commit }) {
       const lunchBoxProducts = state.filterProducts.filter((item) => item.price >= 100);

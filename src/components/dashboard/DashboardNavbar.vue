@@ -70,7 +70,10 @@ export default {
     },
   },
   mounted() {
-    this.navbarCollapse = new Collapse(this.$refs.navbarCollapse);
+    const vm = this;
+    vm.navbarCollapse = new Collapse(vm.$refs.navbarCollapse, {
+      toggle: false,
+    });
   },
 };
 </script>
