@@ -219,8 +219,8 @@
 
 <script>
 import { Modal } from 'bootstrap';
-import RemoveModal from '@/components/dashboard/RemoveModal.vue';
 import DashboardPagination from '@/components/dashboard/DashboardPagination.vue';
+import RemoveModal from '@/components/dashboard/RemoveModal.vue';
 
 export default {
   name: 'AdminProducts',
