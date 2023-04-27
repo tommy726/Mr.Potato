@@ -14,6 +14,7 @@ https://tommy726.github.io/Mr.Potato/
   <li>vue-axios</li>
   <li>AOS</li>  
   <li>bootstrap</li>
+  <li>SCSS</li>
   <li>ESLint with Standard</li>
 </ul>
 
