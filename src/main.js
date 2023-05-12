@@ -36,7 +36,7 @@ app.config.globalProperties.$filters = {
   date: dateFilter,
 };
 
-app.component('isLoading', Loading)
+app.component('IsLoading', Loading)
   .component('Form', Form)
   .component('Field', Field)
   .use(store)

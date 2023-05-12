@@ -211,6 +211,7 @@ export default {
           } else {
             vm.infoModal.hide();
           }
+          vm.$store.dispatch('updateLoading', false);
         })
         .catch(() => {
           vm.$store.dispatch('alertModules/updateMessage', {
@@ -218,7 +219,6 @@ export default {
             status: false,
           });
         });
-      vm.$store.dispatch('updateLoading', false);
     },
   },
   created() {

@@ -11,7 +11,6 @@
               <th colspan="2" scope="col">商品名稱</th>
               <th scope="col" class="text-end">單價</th>
               <th scope="col" class="text-center" width="100">數量</th>
-              <th scope="col" class="text-center" width="40">更新</th>
               <th scope="col" class="text-end">總價</th>
             </tr>
           </thead>
@@ -34,24 +33,16 @@
                     min="1"
                     aria-label="quantity"
                     aria-describedby="quantity"
+                    @change="updateCart(item.product.id, item.qty, item.id)"
                   />
                 </div>
-              </td>
-              <td class="text-center">
-                <button
-                  @click="updateCart(item.product.id, item.qty, item.id)"
-                  type="button"
-                  class="btn btn-sm btn-outline-secondary"
-                >
-                  <i class="fa-solid fa-arrow-rotate-left"></i>
-                </button>
               </td>
               <td class="text-end">{{ $filters.currency(item.qty * item.product.price) }}</td>
             </tr>
           </tbody>
           <tfoot>
             <tr>
-              <th colspan="5" scope="row" class="text-end">
+              <th colspan="4" scope="row" class="text-end">
                 <label for="coupon" class="d-flex w-75 align-items-center ms-auto"
                   >優惠券：
                   <input
@@ -71,7 +62,7 @@
               </td>
             </tr>
             <tr>
-              <td scope="row" colspan="4" class="text-end">共有 {{ totalQuantity }} 樣商品</td>
+              <td scope="row" colspan="3" class="text-end">共有 {{ totalQuantity }} 樣商品</td>
               <td class="text-end fw-bold">總計</td>
               <td class="text-end fw-bold">
                 <del v-if="couponData.status">{{ $filters.currency(cart.total) }}</del>
@@ -79,7 +70,7 @@
               </td>
             </tr>
             <tr class="text-danger" v-if="couponData.status">
-              <td scope="row" colspan="5" class="text-end fw-bold">折扣後</td>
+              <td colspan="4" scope="row" class="text-end fw-bold">折扣後</td>
               <td class="text-end fw-bold">{{ $filters.currency(cart.final_total) }}</td>
             </tr>
           </tfoot>

@@ -5,7 +5,7 @@
       <div class="row justify-content-center">
         <div class="col-md-3 mb-6 product-list">
           <div class="top sticky-md-top">
-            <h3 class="mt-4 mt-md-8">Categories</h3>
+            <h3>Categories</h3>
             <div class="list-group flex-row flex-md-column justify-content-between">
               <router-link
                 class="list-group-item"

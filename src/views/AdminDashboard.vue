@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import DashboardSidebar from '@/components/dashboard/DashboardSidebar.vue';
 import DashboardNavbar from '@/components/dashboard/DashboardNavbar.vue';
+import DashboardSidebar from '@/components/dashboard/DashboardSidebar.vue';
 
 export default {
   name: 'AdminDashboard',

@@ -1,16 +1,17 @@
 <template>
   <div>
     <button
-      class="btn btn-outline-potatoText w-100 mb-5"
+      class="btn btn-outline-potatoText w-100 mb-3"
       type="button"
       data-bs-toggle="collapse"
       data-bs-target="#collapseExample"
-      aria-expanded="false"
       aria-controls="collapseExample"
+      :aria-expanded="isExpanded"
+      @click="isExpanded = !isExpanded"
     >
-      顯示訂單資訊<i class="bi bi-arrow-down-circle"></i>
+      {{ isExpanded ? '隱藏訂單資訊' : '顯示訂單資訊' }}
     </button>
-    <div class="collapse mb-5" id="collapseExample">
+    <div class="collapse mb-3" id="collapseExample">
       <div class="card card-body">
         <div class="table-responsive">
           <table class="table align-middle text-nowrap">
@@ -96,6 +97,12 @@
                 </Field>
               </label>
             </div>
+            <label for="message" class="form-label w-100"
+              >留言
+              <Field id="message" name="message" v-slot="{ field }">
+                <input v-bind="field" type="text" class="form-control" />
+              </Field>
+            </label>
           </div>
         </div>
       </div>
@@ -120,14 +127,17 @@
                     class="form-control"
                     :class="{ 'is-valid': meta.valid, 'is-invalid': errorMessage }"
                   />
-                  <span v-if="errorMessage && meta.touched" class="text-danger fa-sm">
-                    {{ errorMessage }}
-                  </span>
                 </Field>
               </label>
             </div>
+            <label for="community" class="form-label w-100"
+              >大樓 / 社區名稱
+              <Field id="community" name="community" v-slot="{ field }">
+                <input v-bind="field" type="text" class="form-control" />
+              </Field>
+            </label>
             <div class="form-check-label mb-3">
-              付款方式
+              *付款方式
               <div class="mt-2">
                 <Field
                   name="payment"
@@ -174,50 +184,41 @@ export default {
     return {
       userInfo: [
         {
-          label: '姓名',
+          label: '*姓名',
           name: 'name',
           as: 'input',
           rules: 'required',
         },
         {
-          label: '信箱',
+          label: '*信箱',
           name: 'email',
           as: 'input',
           rules: 'required|email',
         },
         {
-          label: '電話',
+          label: '*電話',
           name: 'tel',
           as: 'input',
           type: 'tel',
           rules: 'required',
         },
-        {
-          label: '留言',
-          name: 'message',
-          as: 'input',
-        },
       ],
       detailAddress: [
         {
-          label: '縣 / 市區',
+          label: '*縣 / 市區',
           name: 'city',
           as: 'input',
           rules: 'required',
         },
         {
-          label: '地址',
+          label: '*地址',
           name: 'address',
           as: 'input',
           rules: 'required',
         },
-        {
-          label: '大樓 / 社區名稱',
-          name: 'community',
-          as: 'input',
-        },
       ],
       payment: '',
+      isExpanded: false,
     };
   },
   methods: {
@@ -236,7 +237,8 @@ export default {
         },
         message: values.message,
       };
-      vm.$http.post(api, { data: userInfo })
+      vm.$http
+        .post(api, { data: userInfo })
         .then((response) => {
           vm.$store.dispatch('alertModules/updateMessage', {
             message: response.data.message,

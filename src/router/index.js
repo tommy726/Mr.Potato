@@ -8,42 +8,42 @@ const routes = [
     component: () => import('@/views/CustomerIndex.vue'),
     children: [
       {
-        path: '/',
+        path: '',
         name: 'CustomerHome',
         component: () => import('@/views/customer/CustomerHome.vue'),
       },
       {
-        path: '/login',
-        name: 'Login',
+        path: 'login',
+        name: 'LoginPage',
         component: () => import('@/views/customer/LoginPage.vue'),
       },
       {
-        path: '/signup',
-        name: 'Signup',
+        path: 'signup',
+        name: 'SignupPage',
         component: () => import('@/views/customer/SignupPage.vue'),
       },
       {
-        path: '/product_list/:productCategory',
-        name: 'List',
+        path: 'product_list/:productCategory',
+        name: 'ProductList',
         component: () => import('@/views/customer/ProductList.vue'),
       },
       {
-        path: '/favorite',
-        name: 'Favorite',
+        path: 'favorite',
+        name: 'FavoriteProduct',
         component: () => import('@/views/customer/FavoriteProduct.vue'),
       },
       {
-        path: '/product_page/:productId',
-        name: 'Page',
+        path: 'product_page/:productId',
+        name: 'ProductPage',
         component: () => import('@/views/customer/ProductPage.vue'),
       },
       {
-        path: '/check_cart',
+        path: 'check_cart',
         name: 'CustomerOrder',
         component: () => import('@/views/customer/CustomerOrder.vue'),
         children: [
           {
-            path: '/check_cart',
+            path: '',
             name: 'CheckCart',
             component: () => import('@/views/customer/orderPage/CheckCart.vue'),
           },
@@ -67,23 +67,23 @@ const routes = [
     ],
   },
   {
-    path: '/',
+    path: '/admin',
     name: 'AdminDashboard',
     component: () => import('@/views/AdminDashboard.vue'),
     meta: { requiresAuth: true },
     children: [
       {
-        path: '/admin/products',
+        path: 'products',
         name: 'AdminProducts',
         component: () => import('@/views/dashboard/AdminProducts.vue'),
       },
       {
-        path: '/admin/orders',
+        path: 'orders',
         name: 'AdminOrders',
         component: () => import('@/views/dashboard/AdminOrders.vue'),
       },
       {
-        path: '/admin/coupons',
+        path: 'coupons',
         name: 'AdminCoupons',
         component: () => import('@/views/dashboard/AdminCoupons.vue'),
       },
@@ -99,8 +99,6 @@ const router = createRouter({
   history: createWebHashHistory(process.env.BASE_URL),
   routes,
 });
-
-export default router;
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
@@ -124,3 +122,5 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
+
+export default router;

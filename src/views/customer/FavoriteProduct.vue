@@ -24,7 +24,7 @@ import PageBanner from '@/components/customer/PageBanner.vue';
 import ProductsItem from '@/components/customer/ProductsItem.vue';
 
 export default {
-  name: 'ProductList',
+  name: 'FavoriteProduct',
   components: {
     PageBanner,
     ProductsItem,

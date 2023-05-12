@@ -58,25 +58,25 @@
               </ul>
             </div>
             <div class="col-9">
-              <div class="input-group">
-                <input
-                  v-model="email"
+              <Form @submit="onSubmit" class="input-group">
+                <Field
+                  name="email"
                   type="email"
+                  :rules="validateEmail"
                   class="form-control"
-                  placeholder="請輸入 Email"
-                  aria-label="subscribeEmail"
-                  aria-describedby="subscribeEmail"
                 />
                 <button
-                  @click="subscription"
-                  type="button"
-                  class="btn input-group-text btn-primary text-white"
+                  type="submit"
+                  class="btn btn-primary text-white"
+                  :class="{ 'disabled-btn': disabled }"
+                  :disabled="disabled"
                 >
                   訂閱
                 </button>
-              </div>
+              </Form>
             </div>
           </div>
+          <span class="d-block text-end text-danger mt-1"> {{ message }}</span>
           <span class="d-block text-end">圖片均來自網路，純屬個人作業，無商業行為。</span>
         </div>
       </div>
@@ -89,12 +89,30 @@ export default {
   name: 'CustomerFooter',
   data() {
     return {
-      email: '',
+      message: '',
+      disabled: true,
     };
   },
   methods: {
-    subscription() {
-      this.email = '感謝訂閱';
+    validateEmail(value) {
+      const vm = this;
+      if (!value) {
+        vm.disabled = true;
+        vm.message = '';
+        return false;
+      }
+      const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+      if (!regex.test(value)) {
+        vm.disabled = true;
+        vm.message = '請輸入正確的 email';
+        return false;
+      }
+      vm.disabled = false;
+      vm.message = '';
+      return true;
+    },
+    onSubmit() {
+      this.message = '感謝訂閱';
     },
   },
 };
