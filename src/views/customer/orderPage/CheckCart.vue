@@ -90,7 +90,7 @@ export default {
   name: 'CheckCart',
   data() {
     return {
-      coupon_code: '' || JSON.parse(localStorage.getItem('couponData')).code,
+      coupon_code: localStorage.getItem('couponData') ? JSON.parse(localStorage.getItem('couponData')).code : '',
     };
   },
   methods: {
