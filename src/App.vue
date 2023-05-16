@@ -3,19 +3,19 @@
     <IsLoading :active="$store.state.isLoading">
       <div><img src="@/assets/images/loading.gif" alt="loading" /></div>
     </IsLoading>
-    <AlertMessageVue />
-    <router-view />
+    <AlertMessage />
+    <RouterView />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-import AlertMessageVue from './components/shared/AlertMessage.vue';
+import AlertMessage from './components/shared/AlertMessage.vue';
 
 export default {
   name: 'App',
   components: {
-    AlertMessageVue,
+    AlertMessage,
   },
   computed: {
     ...mapGetters(['isLoading']),

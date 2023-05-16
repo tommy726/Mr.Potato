@@ -35,8 +35,7 @@
             ><i class="fa-solid fa-cart-shopping me-1"></i>
             <span
               v-if="cart.carts.length"
-              class="position-absolute top-5 start-sm-100
-                translate-middle badge rounded-pill bg-primary"
+              class="position-absolute translate-middle badge rounded-pill bg-primary"
             >
               {{ cart.carts.length }}
             </span>
@@ -116,8 +115,7 @@
                 ><i class="fa-solid fa-cart-shopping me-1"></i>購物車
                 <span
                   v-if="cart.carts.length"
-                  class="position-absolute top-5 start-sm-100
-                    translate-middle badge rounded-pill bg-primary"
+                  class="cartCount translate-middle badge rounded-pill bg-primary"
                 >
                   {{ cart.carts.length }}
                 </span>

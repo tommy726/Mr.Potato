@@ -5,7 +5,7 @@
       <div class="d-flex flex-nowrap">
         <DashboardSidebar @sign-out="signOut" />
         <main class="container py-4 py-md-8">
-          <router-view />
+          <RouterView />
         </main>
       </div>
     </div>

@@ -2,7 +2,7 @@
   <div class="d-flex flex-column min-vh-100">
     <CustomerNavbar />
     <main class="flex-grow-1">
-      <router-view />
+      <RouterView />
     </main>
     <CustomerFooter />
   </div>

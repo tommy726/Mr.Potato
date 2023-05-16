@@ -15,6 +15,11 @@
     min-width: 300px;
   }
 
+  .cartCount {
+    position: absolute;
+    top: 15%;
+  }
+
   .router-link-active {
     color: $primary;
   }

@@ -32,13 +32,19 @@
             </td>
             <td class="text-center">
               <button
-                @click="openModal(false, couponItem)"
+                @click="openModal(false, false, couponItem)"
                 type="button"
                 class="btn btn-outline-info white-text-btn"
               >
                 編輯
               </button>
-              <RemoveModal :data="couponItem" @remove="removeCoupon(couponItem.id)" />
+              <button
+                @click="openModal(false, true, couponItem)"
+                type="button"
+                class="btn btn-outline-danger ms-2"
+              >
+                刪除
+              </button>
             </td>
           </tr>
         </tbody>
@@ -61,7 +67,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header bg-info text-white">
-            <h1 v-if="newCouponItem" class="modal-title fs-5" id="couponModalLabel">新增優惠券</h1>
+            <h1 v-if="isNew" class="modal-title fs-5" id="couponModalLabel">新增優惠券</h1>
             <h1 v-else class="modal-title fs-5" id="couponModalLabel">
               編輯 {{ tempCoupon.title }}
             </h1>
@@ -140,6 +146,12 @@
         </div>
       </div>
     </div>
+
+    <RemoveModal
+      :temp-data="tempCoupon"
+      @remove="removeCoupon(tempCoupon.id)"
+      ref="removeModal"
+    />
   </div>
 </template>
 
@@ -166,7 +178,7 @@ export default {
       },
       due_date: '',
       pagination: {},
-      newCouponItem: false,
+      isNew: false,
     };
   },
   watch: {
@@ -200,7 +212,7 @@ export default {
       const vm = this;
       let api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon`;
       let httpMethod = 'post';
-      if (!vm.newCouponItem) {
+      if (!vm.isNew) {
         api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
         httpMethod = 'put';
       }
@@ -245,20 +257,22 @@ export default {
           });
         });
     },
-    openModal(newCouponItem, couponItem) {
-      const vm = this;
-      if (newCouponItem) {
-        vm.tempCoupon = {};
+    openModal(isNew, remove, couponItem) {
+      if (isNew) {
+        this.tempCoupon = {};
         const [newCouponDate] = new Date(+new Date() + 8 * 3600 * 1000).toISOString().split('T');
-        vm.due_date = `${newCouponDate}`;
-        vm.newCouponItem = true;
-        vm.couponModal.show();
+        this.due_date = `${newCouponDate}`;
+        this.isNew = true;
+        this.couponModal.show();
+      } else if (!isNew && !remove) {
+        this.tempCoupon = { ...couponItem };
+        const [tempCouponDate] = new Date(this.tempCoupon.due_date * 1000).toISOString().split('T');
+        this.due_date = `${tempCouponDate}`;
+        this.isNew = false;
+        this.couponModal.show();
       } else {
-        vm.tempCoupon = { ...couponItem };
-        const [tempCouponDate] = new Date(vm.tempCoupon.due_date * 1000).toISOString().split('T');
-        vm.due_date = `${tempCouponDate}`;
-        vm.newCouponItem = false;
-        vm.couponModal.show();
+        this.tempCoupon = { ...couponItem };
+        this.$refs.removeModal.openModal();
       }
     },
   },
