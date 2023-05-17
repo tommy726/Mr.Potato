@@ -54,99 +54,13 @@
     <!-- pagination -->
     <DashboardPagination :pagination-data="pagination" @getPagination="getCoupons" />
 
-    <!-- coupon modal -->
-    <div
-      class="modal fade"
-      id="couponModal"
-      tabindex="-1"
-      aria-labelledby="couponModalLabel"
-      aria-hidden="true"
-      data-bs-backdrop="static"
+    <CouponModal
+      :temp-data="tempCoupon"
+      :is-new="isNew"
+      :due-date="due_date"
+      @update="getCoupons"
       ref="couponModal"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header bg-info text-white">
-            <h1 v-if="isNew" class="modal-title fs-5" id="couponModalLabel">新增優惠券</h1>
-            <h1 v-else class="modal-title fs-5" id="couponModalLabel">
-              編輯 {{ tempCoupon.title }}
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body max-width-input px-6">
-            <div class="input-group mb-3">
-              <label for="title" class="form-label"
-                >優惠券名稱
-                <input
-                  v-model="tempCoupon.title"
-                  type="text"
-                  class="form-control"
-                  id="title"
-                  placeholder="請輸入名稱"
-                />
-              </label>
-            </div>
-            <div class="input-group mb-3">
-              <label for="code" class="form-label"
-                >優惠碼
-                <input
-                  v-model="tempCoupon.code"
-                  type="text"
-                  class="form-control"
-                  id="code"
-                  placeholder="請輸入優惠碼"
-                />
-              </label>
-            </div>
-            <div class="input-group mb-3">
-              <label for="due_date" class="form-label"
-                >到期日
-                <input v-model="due_date" type="date" class="form-control" id="due_date" />
-              </label>
-            </div>
-            <div class="input-group mb-3">
-              <label for="percent" class="form-label"
-                >折扣百分比(%)
-                <input
-                  v-model="tempCoupon.percent"
-                  type="number"
-                  class="form-control"
-                  id="percent"
-                  placeholder="請輸入折扣百分比"
-                />
-              </label>
-            </div>
-            <div class="input-group">
-              <div class="form-check">
-                <label class="form-check-label" for="is_enabled">
-                  是否啟用
-                  <input
-                    v-model="tempCoupon.is_enabled"
-                    class="form-check-input"
-                    type="checkbox"
-                    id="is_enabled"
-                  />
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-              取消
-            </button>
-            <button @click="updateCoupon" type="button" class="btn btn-info text-white">
-              確定
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    />
     <RemoveModal
       :temp-data="tempCoupon"
       @remove="removeCoupon(tempCoupon.id)"
@@ -156,14 +70,15 @@
 </template>
 
 <script>
-import { Modal } from 'bootstrap';
 import DashboardPagination from '@/components/dashboard/DashboardPagination.vue';
+import CouponModal from '@/components/dashboard/CouponModal.vue';
 import RemoveModal from '@/components/dashboard/RemoveModal.vue';
 
 export default {
   name: 'AdminCoupons',
   components: {
     DashboardPagination,
+    CouponModal,
     RemoveModal,
   },
   data() {
@@ -180,13 +95,6 @@ export default {
       pagination: {},
       isNew: false,
     };
-  },
-  watch: {
-    due_date() {
-      const vm = this;
-      const timestamp = Math.floor(new Date(vm.due_date) / 1000);
-      vm.tempCoupon.due_date = timestamp;
-    },
   },
   methods: {
     getCoupons(page = 1) {
@@ -263,13 +171,13 @@ export default {
         const [newCouponDate] = new Date(+new Date() + 8 * 3600 * 1000).toISOString().split('T');
         this.due_date = `${newCouponDate}`;
         this.isNew = true;
-        this.couponModal.show();
+        this.$refs.couponModal.openModal();
       } else if (!isNew && !remove) {
         this.tempCoupon = { ...couponItem };
         const [tempCouponDate] = new Date(this.tempCoupon.due_date * 1000).toISOString().split('T');
         this.due_date = `${tempCouponDate}`;
         this.isNew = false;
-        this.couponModal.show();
+        this.$refs.couponModal.openModal();
       } else {
         this.tempCoupon = { ...couponItem };
         this.$refs.removeModal.openModal();
@@ -278,10 +186,6 @@ export default {
   },
   created() {
     this.getCoupons();
-  },
-  mounted() {
-    const vm = this;
-    vm.couponModal = new Modal(vm.$refs.couponModal);
   },
 };
 </script>

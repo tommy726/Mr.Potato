@@ -56,7 +56,7 @@
 
     <!-- product modal -->
     <ProductModal
-      :temp-product="tempProduct"
+      :temp-data="tempProduct"
       :is-new="isNew"
       @update="getProducts"
       ref="productModal"
@@ -87,7 +87,6 @@ export default {
       tempProduct: {},
       pagination: {},
       isNew: false,
-      remove: false,
     };
   },
   methods: {

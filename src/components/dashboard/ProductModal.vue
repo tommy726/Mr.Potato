@@ -167,12 +167,11 @@ import { Modal } from 'bootstrap';
 
 export default {
   name: 'ProductModal',
-  props: ['temp-product', 'isNew'],
+  props: ['temp-data', 'isNew'],
   data() {
     return {
       isLoading: false,
       product: {},
-      loadingUploadImg: false,
       fileUploading: false,
     };
   },
@@ -251,7 +250,7 @@ export default {
     },
   },
   watch: {
-    tempProduct(item) {
+    tempData(item) {
       this.product = item;
     },
   },
