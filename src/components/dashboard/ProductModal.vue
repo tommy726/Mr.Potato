@@ -170,7 +170,6 @@ export default {
   props: ['temp-data', 'isNew'],
   data() {
     return {
-      isLoading: false,
       product: {},
       fileUploading: false,
     };
