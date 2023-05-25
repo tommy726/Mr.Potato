@@ -33,7 +33,7 @@
                     min="1"
                     aria-label="quantity"
                     aria-describedby="quantity"
-                    @change ="updateCart(item.product.id, item.qty, item.id)"
+                    @change ="debounce(() => updateCart(item.product.id, item.qty, item.id))"
                   />
                 </div>
               </td>
@@ -93,6 +93,7 @@ export default {
       coupon_code: localStorage.getItem('couponData')
         ? JSON.parse(localStorage.getItem('couponData')).code
         : '',
+      debounceTimer: null,
     };
   },
   methods: {
@@ -100,11 +101,15 @@ export default {
     removeCart(id) {
       this.$store.dispatch('cartsModules/removeCart', id);
     },
+    debounce(func, delay = 500) {
+      clearTimeout(this.debounceTimer);
+      this.debounceTimer = setTimeout(func, delay);
+    },
     updateCart(id, qty, cartId) {
       const vm = this;
       vm.$store.dispatch('cartsModules/updateCart', { id, qty, cartId });
       if (vm.coupon_code !== '') {
-        setTimeout(() => vm.addCouponCode(), 100);
+        setTimeout(() => vm.addCouponCode(), 300);
       }
     },
     addCouponCode() {
