@@ -33,7 +33,7 @@
                     min="1"
                     aria-label="quantity"
                     aria-describedby="quantity"
-                    @change="updateCart(item.product.id, item.qty, item.id)"
+                    @change ="updateCart(item.product.id, item.qty, item.id)"
                   />
                 </div>
               </td>
@@ -90,7 +90,9 @@ export default {
   name: 'CheckCart',
   data() {
     return {
-      coupon_code: localStorage.getItem('couponData') ? JSON.parse(localStorage.getItem('couponData')).code : '',
+      coupon_code: localStorage.getItem('couponData')
+        ? JSON.parse(localStorage.getItem('couponData')).code
+        : '',
     };
   },
   methods: {
@@ -111,7 +113,8 @@ export default {
       const coupon = {
         code: vm.coupon_code,
       };
-      vm.$http.post(api, { data: coupon })
+      vm.$http
+        .post(api, { data: coupon })
         .then((response) => {
           if (response.data.success) {
             const status = response.data.success;
