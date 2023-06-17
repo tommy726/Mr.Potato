@@ -15,7 +15,7 @@ https://tommy726.github.io/Mr.Potato/
   <li>AOS</li>  
   <li>bootstrap</li>
   <li>SCSS</li>
-  <li>ESLint with Standard</li>
+  <li>ESLint with Airbnb</li>
 </ul>
 
 ## Project setup
